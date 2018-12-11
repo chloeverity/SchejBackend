@@ -16,7 +16,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
 
   private
 
-  def user_paramssignin
-    params.require(:user).permit(:email, :password, :password_confirmation, :mobile, :name)
+  def user_params
+    params.permit(:email, :password, :password_confirmation, :mobile, :name)
   end
 end
