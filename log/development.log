@@ -1843,3 +1843,23 @@ Can't verify CSRF token authenticity.
 Completed 201 Created in 143ms (Views: 0.3ms | ActiveRecord: 2.4ms)
 
 
+Started POST "/api/v1/sign_up" for ::1 at 2018-12-11 15:14:14 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/Joel/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"name"=>"wdawdaw", "organisation"=>"awdawdaw", "email"=>"awdaw@gamailc.om", "mobile"=>"12312", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "registration"=>{"name"=>"wdawdaw", "organisation"=>"awdawdaw", "email"=>"awdaw@gamailc.om", "mobile"=>"12312", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}}
+HTTP Origin header (http://evil.com/) didn't match request.base_url (http://localhost:3001)
+Unpermitted parameters: :passwordConfirmation, :registration
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:8
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "awdaw@gamailc.om"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:8
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "oVjuS3sm4TgQ9PxtC6Uo"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:8
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token", "name", "mobile", "organisation") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "awdaw@gamailc.om"], ["encrypted_password", "$2a$11$GM0LtO7SoOP7x7hMCLYLSuOrWah6pnGmhs8oeppt7FHhOeY8C2zyy"], ["created_at", "2018-12-11 15:14:14.498680"], ["updated_at", "2018-12-11 15:14:14.498680"], ["authentication_token", "oVjuS3sm4TgQ9PxtC6Uo"], ["name", "wdawdaw"], ["mobile", "12312"], ["organisation", "awdawdaw"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:8
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:8
+Completed 201 Created in 167ms (Views: 0.5ms | ActiveRecord: 3.9ms)
+
+
