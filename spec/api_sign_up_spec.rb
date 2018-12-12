@@ -6,8 +6,8 @@
 #     #   get '/'
 #     # end
 #     it "returns a JSON" do
-#       post :create, :params => {'email' => 'test@test.com', 'password' => 'testpassword', 'password_confirmation' => 'testpassword'}
-#       p response
+#       post '/users', :params => { :user => {'email' => 'test@test.com', 'password' => 'testpassword', 'password_confirmation' => 'testpassword'}}
+#       # p response
 #
 #     end
 #   end
