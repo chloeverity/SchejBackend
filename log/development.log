@@ -2413,3 +2413,240 @@ Completed 200 OK in 141ms (Views: 17.7ms | ActiveRecord: 0.0ms)
   ↳ bin/rails:11
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:11
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 15:40:52 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/rebeccalelew/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::ShiftsController#create as */*
+  Parameters: {"title"=>"tet5@test.com", "start_time"=>"1517540400000", "end_time"=>"1517540400000", "user_id"=>"1"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:10
+  [1m[36mShift Create (0.7ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["title", "tet5@test.com"], ["created_at", "2018-12-12 15:40:53.113998"], ["updated_at", "2018-12-12 15:40:53.113998"], ["user_id", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:10
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:10
+Completed 201 Created in 99ms (Views: 1.8ms | ActiveRecord: 6.5ms)
+
+
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 15:41:18 +0000
+Processing by Api::V1::ShiftsController#create as */*
+  Parameters: {"title"=>"tet5@test.com", "start_time"=>"1517540400000", "end_time"=>"1517540400000", "user_id"=>"1"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[36mShift Create (0.6ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["title", "tet5@test.com"], ["created_at", "2018-12-12 15:41:18.262188"], ["updated_at", "2018-12-12 15:41:18.262188"], ["user_id", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+Completed 201 Created in 71ms (Views: 15.1ms | ActiveRecord: 9.4ms)
+
+
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 15:43:41 +0000
+Processing by Api::V1::ShiftsController#create as */*
+  Parameters: {"title"=>"tet5@test.com", "start_time"=>"1517540400000", "end_time"=>"1517540400000", "user_id"=>"1"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[36mShift Create (0.5ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["title", "tet5@test.com"], ["created_at", "2018-12-12 15:43:41.349632"], ["updated_at", "2018-12-12 15:43:41.349632"], ["user_id", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+Completed 201 Created in 38ms (Views: 0.6ms | ActiveRecord: 5.3ms)
+
+
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 15:44:31 +0000
+Processing by Api::V1::ShiftsController#create as */*
+  Parameters: {"title"=>"tet5@test.com", "start_time"=>"1517540400000", "end_time"=>"1517540400000", "user_id"=>"1"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[36mShift Create (0.8ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["title", "tet5@test.com"], ["created_at", "2018-12-12 15:44:31.220142"], ["updated_at", "2018-12-12 15:44:31.220142"], ["user_id", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+Completed 201 Created in 42ms (Views: 0.5ms | ActiveRecord: 7.2ms)
+
+
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 15:45:14 +0000
+Processing by Api::V1::ShiftsController#create as */*
+  Parameters: {"title"=>"tet5@test.com", "start_time"=>"1517540400000", "end_time"=>"1517540400000", "user_id"=>"1"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[36mShift Create (0.6ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["title", "tet5@test.com"], ["created_at", "2018-12-12 15:45:14.883470"], ["updated_at", "2018-12-12 15:45:14.883470"], ["user_id", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+Completed 201 Created in 32ms (Views: 0.6ms | ActiveRecord: 5.1ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:11
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:11
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:11
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:11
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+Migrating to DeviseCreateUsers (20181211103032)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181211103032_devise_create_users.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20181211103032_devise_create_users.rb:38
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20181211103032_devise_create_users.rb:39
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181211103032"]]
+  ↳ bin/rails:11
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:11
+Migrating to AddAuthenticationTokenToUsers (20181211103621)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "users" ADD "authentication_token" varchar[0m
+  ↳ db/migrate/20181211103621_add_authentication_token_to_users.rb:5
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_users_on_authentication_token" ON "users" ("authentication_token")[0m
+  ↳ db/migrate/20181211103621_add_authentication_token_to_users.rb:6
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181211103621"]]
+  ↳ bin/rails:11
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:11
+Migrating to AddNameAndMobileToUsers (20181211142715)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "users" ADD "name" varchar[0m
+  ↳ db/migrate/20181211142715_add_name_and_mobile_to_users.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "mobile" varchar[0m
+  ↳ db/migrate/20181211142715_add_name_and_mobile_to_users.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181211142715"]]
+  ↳ bin/rails:11
+  [1m[35m (8.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:11
+Migrating to AddOrganisationToUsers (20181211143447)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "users" ADD "organisation" varchar[0m
+  ↳ db/migrate/20181211143447_add_organisation_to_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181211143447"]]
+  ↳ bin/rails:11
+  [1m[35m (35.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:11
+Migrating to CreateShifts (20181211153932)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "shifts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "start_time" varchar, "end_time" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181211153932_create_shifts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181211153932"]]
+  ↳ bin/rails:11
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:11
+Migrating to AddUserToShifts (20181211154342)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "shifts" ADD "user_id" integer[0m
+  ↳ db/migrate/20181211154342_add_user_to_shifts.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_shifts_on_user_id" ON "shifts" ("user_id")[0m
+  ↳ db/migrate/20181211154342_add_user_to_shifts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181211154342"]]
+  ↳ bin/rails:11
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:11
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:11
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:11
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-12-12 15:46:37.278485"], ["updated_at", "2018-12-12 15:46:37.278485"]]
+  ↳ bin/rails:11
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 15:46:44 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/rebeccalelew/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::ShiftsController#create as */*
+  Parameters: {"title"=>"tet5@test.com", "start_time"=>"1517540400000", "end_time"=>"1517540400000", "user_id"=>"1"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+Completed 422 Unprocessable Entity in 53ms (ActiveRecord: 1.9ms)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: User must exist):
+  
+app/controllers/api/v1/shifts_controller.rb:11:in `create'
+Started POST "/api/v1/sign_up?email=resijfba@asd&password=[FILTERED]&password_confirmation=[FILTERED]" for 127.0.0.1 at 2018-12-12 15:47:15 +0000
+Processing by Api::V1::RegistrationsController#create as */*
+  Parameters: {"email"=>"resijfba@asd", "password"=>"[FILTERED]", "confirmation_password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+Unpermitted parameter: :confirmation_password
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:10
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "resijfba@asd"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "YqrPL9wJPfenyTacQ34-"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:10
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "resijfba@asd"], ["encrypted_password", "$2a$11$S1Q/X1CtKG4B9g21Fhau8uK4d.PglwmkOt12dwyvtcZU0Lzy.mAWi"], ["created_at", "2018-12-12 15:47:15.787508"], ["updated_at", "2018-12-12 15:47:15.787508"], ["authentication_token", "YqrPL9wJPfenyTacQ34-"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:10
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:11
+Completed 201 Created in 202ms (Views: 0.4ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/api/v1/shifts?title=resijfba@asd&start_time=1517540400000&end_time=1517540400000&user_id=1" for 127.0.0.1 at 2018-12-12 15:48:36 +0000
+Processing by Api::V1::ShiftsController#create as */*
+  Parameters: {"title"=>"resijfba@asd", "start_time"=>"1517540400000", "end_time"=>"1517540400000", "user_id"=>"1"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[36mShift Create (0.8ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "resijfba@asd"], ["start_time", "1517540400000"], ["end_time", "1517540400000"], ["created_at", "2018-12-12 15:48:36.451008"], ["updated_at", "2018-12-12 15:48:36.451008"], ["user_id", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+Completed 201 Created in 44ms (Views: 0.8ms | ActiveRecord: 4.1ms)
+
+

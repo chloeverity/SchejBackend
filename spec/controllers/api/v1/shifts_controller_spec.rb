@@ -12,6 +12,7 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
   describe 'creating a shift' do
     it 'creates a shift with title, start time and end time' do
       post '/api/v1/shifts', :params => {'title' => 'test@test.com', 'start_time' => 1517540400000, 'end_time' => 1517540400000, 'user_id' => 1}
+      p response.body
       expect(JSON.parse(response.body)).to include "title" => "test@test.com"
     end
   end
