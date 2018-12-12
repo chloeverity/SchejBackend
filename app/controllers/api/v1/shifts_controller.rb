@@ -7,7 +7,18 @@ class Api::V1::ShiftsController < ApplicationController
   end
 
   def create
-    @shift = Shift.create(shift_params)
+    @shift = Shift.new(shift_params)
+    @shift.save
+    render json: @shift, status: :created
+  end
+
+  def destroy
+    @shift = Shift.where(id: params[:id]).first
+    if @shift.destroy
+      head(:ok)
+    else
+      head(:unprocessable_entity)
+    end
   end
 
   private
