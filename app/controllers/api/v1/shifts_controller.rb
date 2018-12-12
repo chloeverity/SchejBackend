@@ -7,7 +7,7 @@ class Api::V1::ShiftsController < ApplicationController
 
   def create
     @shift = Shift.new(shift_params)
-    @shift.save!
+    @shift.save
 
     render json: @shift.as_json(title: @shift.title, start_time: @shift.start_time, end_time: @shift.end_time), status: :created
   end
@@ -25,6 +25,6 @@ class Api::V1::ShiftsController < ApplicationController
   private
 
   def shift_params
-    params.permit(:title, :start_time, :end_time).merge(user_id: 1)
+    params.permit(:title, :start_time, :end_time).merge(user_id: current_user.id)
   end
 end

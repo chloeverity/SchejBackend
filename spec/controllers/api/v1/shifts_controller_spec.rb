@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::ShiftsController, type: :request do
-  # let(:current_user) { double current_user }
-  #
-  before do
-    # allow(current_user).to receive(:id).and_return('1')
+  let(:user) { double :current_user }
+
+  before(:each) do
+    allow(user).to receive(:id).and_return('1')
+    allow_any_instance_of(Api::V1::ShiftsController).to receive(:current_user).and_return(user)
     post '/api/v1/sign_up', :params => {'email' => 'test@test.com', 'password' => 'testpassword', 'password_confirmation' => 'testpassword'}
   end
 
@@ -17,6 +18,7 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
   describe 'index' do
 
     it 'shows all shifts' do
+      post '/api/v1/sign_in', :params => {'email' => 'test@test.com', 'password' => 'testpassword'}
       post '/api/v1/shifts', :params => {'title' => 'test@test.com', 'start_time' => DateTime.now, 'end_time' => DateTime.now}
       get '/api/v1/shifts'
       expect(JSON.parse(response.body).first).to include('title' => 'test@test.com')
