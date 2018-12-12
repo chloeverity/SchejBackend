@@ -20,8 +20,7 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
     it 'shows all shifts' do
       post '/api/v1/shifts', :params => {'title' => 'test@test.com', 'start_time' => DateTime.now, 'end_time' => DateTime.now}
       get '/api/v1/shifts'
-      p response.body
-      expect(JSON.parse(response.body)).to have_attributes "test@test.com"
+      expect(JSON.parse(response.body).first).to include('title' => 'test@test.com')
     end
   end
   # describe 'deleting a shift' do
