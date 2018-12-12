@@ -1873,3 +1873,107 @@ Completed 201 Created in 167ms (Views: 0.5ms | ActiveRecord: 3.9ms)
   ↳ bin/rails:11
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:11
+Started POST "/api/v1/sign_in" for 127.0.0.1 at 2018-12-11 17:20:02 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/chloeverity/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.2) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.2) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+Migrating to CreateShifts (20181211153932)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181211153932_create_shifts.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "shifts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "start_time" datetime, "end_time" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181211153932_create_shifts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181211153932"]]
+  ↳ bin/rails:11
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:11
+Migrating to AddUserToShifts (20181211154342)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "shifts" ADD "user_id" integer[0m
+  ↳ db/migrate/20181211154342_add_user_to_shifts.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_shifts_on_user_id" ON "shifts" ("user_id")[0m
+  ↳ db/migrate/20181211154342_add_user_to_shifts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181211154342"]]
+  ↳ bin/rails:11
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:11
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:11
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+Started POST "/api/v1/sign_in" for 127.0.0.1 at 2018-12-11 17:20:33 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/chloeverity/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (undefined method `prepend_before_filter' for Api::V1::SessionsController:Class
+Did you mean?  prepend_before_action):
+  
+app/controllers/api/v1/sessions_controller.rb:4:in `<class:SessionsController>'
+app/controllers/api/v1/sessions_controller.rb:3:in `<main>'
+Started POST "/api/v1/sign_in" for 127.0.0.1 at 2018-12-11 17:20:47 +0000
+  
+ActionController::RoutingError (undefined method `prepend_before_filter' for Api::V1::SessionsController:Class
+Did you mean?  prepend_before_action):
+  
+app/controllers/api/v1/sessions_controller.rb:4:in `<class:SessionsController>'
+app/controllers/api/v1/sessions_controller.rb:3:in `<main>'
+Started POST "/api/v1/sign_in" for 127.0.0.1 at 2018-12-11 17:21:08 +0000
+  
+ActionController::RoutingError (undefined method `prepend_before_filter' for Api::V1::SessionsController:Class
+Did you mean?  prepend_before_action):
+  
+app/controllers/api/v1/sessions_controller.rb:4:in `<class:SessionsController>'
+app/controllers/api/v1/sessions_controller.rb:3:in `<main>'
+Started POST "/api/v1/sign_in" for 127.0.0.1 at 2018-12-11 17:21:24 +0000
+Processing by Api::V1::SessionsController#create as HTML
+  Parameters: {"email"=>"test5@test.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test5@test.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:8
+Completed 200 OK in 155ms (Views: 0.8ms | ActiveRecord: 0.8ms)
+
+

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class Api::V1::SessionsController < Devise::SessionsController
-  prepend_before_filter :require_no_authentication, only: [:create]
-  before_filter :ensure_params_exist, only: :create
+  prepend_before_action :require_no_authentication, only: [:create]
+  before_action :ensure_params_exist, only: :create
   respond_to :json
   def create
-    user = User.find_by(email: params[:user_login])
+    user = User.find_by(email: params[:email])
     unless user.nil?
       if user.valid_password? params[:password]
         render json: user
@@ -22,7 +22,7 @@ class Api::V1::SessionsController < Devise::SessionsController
   protected
 
   def ensure_params_exist
-    return unless params[:user_login].blank?
+    return unless params[:email].blank?
 
     render json: { success: false, message: 'missing user_login parameter' }, status: 422
   end
