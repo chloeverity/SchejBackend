@@ -2081,3 +2081,74 @@ Can't verify CSRF token authenticity.
 Completed 201 Created in 15ms (Views: 2.2ms | ActiveRecord: 0.5ms)
 
 
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:11
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:11
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:11
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 11:23:16 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/chloeverity/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test", "start_time"=>"Tue, 11 Dec 2018 16:33:58  0000", "end_time"=>"Tue, 11 Dec 2018 16:33:58  0000"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+Completed 201 Created in 15ms (Views: 1.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 11:24:47 +0000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/chloeverity/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test7@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:8
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test7@test.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:8
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "PwCzL3YAkdca9SndgGsW"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:8
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test7@test.com"], ["encrypted_password", "$2a$11$GX2zCSONTh81vGjKemc7.uCt2LomEPUKZTYoEwZpPUgHKk7Cdeyri"], ["created_at", "2018-12-12 11:24:48.186589"], ["updated_at", "2018-12-12 11:24:48.186589"], ["authentication_token", "PwCzL3YAkdca9SndgGsW"]]
+  ↳ app/controllers/api/v1/registrations_controller.rb:8
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/registrations_controller.rb:8
+Completed 201 Created in 144ms (Views: 0.4ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 11:28:05 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/chloeverity/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test", "start_time"=>"Tue, 11 Dec 2018 16:33:58  0000", "end_time"=>"Tue, 11 Dec 2018 16:33:58  0000"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+Completed 500 Internal Server Error in 133ms (ActiveRecord: 0.7ms)
+
+
+  
+NameError (undefined local variable or method `shift' for #<Api::V1::ShiftsController:0x00007fdbea83d9c0>
+Did you mean?  @shift):
+  
+app/controllers/api/v1/shifts_controller.rb:12:in `create'
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 11:28:28 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test", "start_time"=>"Tue, 11 Dec 2018 16:33:58  0000", "end_time"=>"Tue, 11 Dec 2018 16:33:58  0000"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:11
+Completed 201 Created in 12ms (Views: 0.8ms | ActiveRecord: 0.7ms)
+
+
