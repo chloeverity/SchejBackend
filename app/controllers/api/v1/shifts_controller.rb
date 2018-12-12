@@ -1,9 +1,18 @@
-class Api::V1::ShiftsController < ActionController::API
-  include ActionController::HttpAuthentication::Basic::ControllerMethods
-  include ActionController::ImplicitRender
+class Api::V1::ShiftsController < ApplicationController
 
-  def create
+  def index
+    @shifts = Shift.all
+
+    render json: @shifts, status: :ok
   end
 
+  def create
+    @shift = Shift.create(shift_params)
+  end
 
+  private
+
+  def shift_params
+    params.permit(:title, :start_time, :end_time)
+  end
 end
