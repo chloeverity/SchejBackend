@@ -25,6 +25,6 @@ class Api::V1::ShiftsController < ApplicationController
   private
 
   def shift_params
-    params.permit(:title, :start_time, :end_time).merge(user_id: current_user.id)
+    params.permit(:title, :start_time, :end_time, :user_id)
   end
 end
