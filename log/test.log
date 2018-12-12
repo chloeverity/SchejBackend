@@ -9107,3 +9107,1063 @@ Completed 201 Created in 6ms (Views: 0.2ms | ActiveRecord: 0.9ms)
   [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (1.6ms)[0m  [1m[31mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.9ms)[0m  [1m[31mDELETE FROM "ar_internal_metadata";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'ar_internal_metadata';[0m
+  [1m[35m (1.0ms)[0m  [1m[31mDELETE FROM "shifts";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'shifts';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:49:51 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "iBvCMDiDXaMxNH7b9jWV"]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$pSsh8whiW7EenrxGJ2h4mugOQFBD729USoFneepsL3T7.oZpsjCvW"], ["created_at", "2018-12-12 13:49:51.254299"], ["updated_at", "2018-12-12 13:49:51.254299"], ["authentication_token", "iBvCMDiDXaMxNH7b9jWV"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 21ms (Views: 0.4ms | ActiveRecord: 1.2ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:49:51 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:49:51+00:00", "end_time"=>"2018-12-12T13:49:51+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.3ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:49:51"], ["end_time", "2018-12-12 13:49:51"], ["created_at", "2018-12-12 13:49:51.273542"], ["updated_at", "2018-12-12 13:49:51.273542"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 16ms (Views: 0.4ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:49:51 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "KSzietu7ezmu9PQm3FAk"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$HCoYLIKIZ0lV3dCiimll6e91mA7wI9ZodYATiisKych1DgxZljrpu"], ["created_at", "2018-12-12 13:49:51.284907"], ["updated_at", "2018-12-12 13:49:51.284907"], ["authentication_token", "KSzietu7ezmu9PQm3FAk"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 5ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:49:51 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:49:51+00:00", "end_time"=>"2018-12-12T13:49:51+00:00"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.1ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:49:51"], ["end_time", "2018-12-12 13:49:51"], ["created_at", "2018-12-12 13:49:51.289138"], ["updated_at", "2018-12-12 13:49:51.289138"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 3ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+Started GET "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:49:51 +0000
+Processing by Api::V1::ShiftsController#index as HTML
+  [1m[36mShift Load (0.1ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts"[0m
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:49:51 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "hz63z1266hVgu9BT7B2M"]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$WHSe9ESBdOicJQztOBobrO2H9nmUXXB5ddRoKfG8l/51XQrzEISmS"], ["created_at", "2018-12-12 13:49:51.300459"], ["updated_at", "2018-12-12 13:49:51.300459"], ["authentication_token", "hz63z1266hVgu9BT7B2M"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 8ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:49:51 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:49:51+00:00", "end_time"=>"2018-12-12T13:49:51+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:49:51"], ["end_time", "2018-12-12 13:49:51"], ["created_at", "2018-12-12 13:49:51.307589"], ["updated_at", "2018-12-12 13:49:51.307589"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 4ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:49:51 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test1@test.com", "start_time"=>"2018-12-12T13:49:51+00:00", "end_time"=>"2018-12-12T13:49:51+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.1ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test1@test.com"], ["start_time", "2018-12-12 13:49:51"], ["end_time", "2018-12-12 13:49:51"], ["created_at", "2018-12-12 13:49:51.313467"], ["updated_at", "2018-12-12 13:49:51.313467"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 4ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+Started DELETE "/api/v1/shifts/id" for 127.0.0.1 at 2018-12-12 13:49:51 +0000
+Processing by Api::V1::ShiftsController#destroy as HTML
+  Parameters: {"id"=>"id"}
+  [1m[36mShift Load (0.1ms)[0m  [1m[34mSELECT  "shifts".* FROM "shifts" WHERE "shifts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:49:51 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "D24AzS8BtEV6x6RmTG65"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$oZPydMhSxd2m8PvC/w.X0eOAxOsoCY9YvTybAygTzuHxVhgpOdqwK"], ["created_at", "2018-12-12 13:49:51.324911"], ["updated_at", "2018-12-12 13:49:51.324911"], ["authentication_token", "D24AzS8BtEV6x6RmTG65"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 7ms (Views: 0.5ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:49:51 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "WR3g-zTjyzem_A1V32ny"]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$vEjbaWYD84tFQJbfHDM.UeWpuOTBxuryuT.wyQJHbAdU0/3B08MD."], ["created_at", "2018-12-12 13:49:51.336592"], ["updated_at", "2018-12-12 13:49:51.336592"], ["authentication_token", "WR3g-zTjyzem_A1V32ny"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 7ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (1.6ms)[0m  [1m[31mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.8ms)[0m  [1m[31mDELETE FROM "ar_internal_metadata";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'ar_internal_metadata';[0m
+  [1m[35m (0.9ms)[0m  [1m[31mDELETE FROM "shifts";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.8ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'shifts';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:50:07 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "ZYf_u8Ug4esySMafkJDn"]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$hAMsWjVXaNxehmDoY59HPuQROJkESUsiq/8DxZttnpbyf2YQYsX02"], ["created_at", "2018-12-12 13:50:07.093394"], ["updated_at", "2018-12-12 13:50:07.093394"], ["authentication_token", "ZYf_u8Ug4esySMafkJDn"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 23ms (Views: 0.5ms | ActiveRecord: 1.2ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:50:07 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:50:07+00:00", "end_time"=>"2018-12-12T13:50:07+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.1ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:50:07"], ["end_time", "2018-12-12 13:50:07"], ["created_at", "2018-12-12 13:50:07.112236"], ["updated_at", "2018-12-12 13:50:07.112236"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 14ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:50:07 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "EPRT3SycjLJM65mWsre7"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$NfctMnvGKnhVB41sUvqrauq1UCFETuosHCYMldvEOm1Y/cQhemb0C"], ["created_at", "2018-12-12 13:50:07.122004"], ["updated_at", "2018-12-12 13:50:07.122004"], ["authentication_token", "EPRT3SycjLJM65mWsre7"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:50:07 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:50:07+00:00", "end_time"=>"2018-12-12T13:50:07+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:50:07"], ["end_time", "2018-12-12 13:50:07"], ["created_at", "2018-12-12 13:50:07.127011"], ["updated_at", "2018-12-12 13:50:07.127011"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 3ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+Started GET "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:50:07 +0000
+Processing by Api::V1::ShiftsController#index as HTML
+  [1m[36mShift Load (0.1ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts"[0m
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:50:07 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "RN127ELsMVW3iszGzpbs"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$twZ9XBJ2fGHyUFGSUTtaQeyOct/1spIZCfSWdeMIadX3tW7/hJSq2"], ["created_at", "2018-12-12 13:50:07.138798"], ["updated_at", "2018-12-12 13:50:07.138798"], ["authentication_token", "RN127ELsMVW3iszGzpbs"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.3ms | ActiveRecord: 0.8ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:50:07 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:50:07+00:00", "end_time"=>"2018-12-12T13:50:07+00:00"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:50:07"], ["end_time", "2018-12-12 13:50:07"], ["created_at", "2018-12-12 13:50:07.143966"], ["updated_at", "2018-12-12 13:50:07.143966"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:50:07 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test1@test.com", "start_time"=>"2018-12-12T13:50:07+00:00", "end_time"=>"2018-12-12T13:50:07+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.1ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test1@test.com"], ["start_time", "2018-12-12 13:50:07"], ["end_time", "2018-12-12 13:50:07"], ["created_at", "2018-12-12 13:50:07.148543"], ["updated_at", "2018-12-12 13:50:07.148543"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+Started DELETE "/api/v1/shifts/id" for 127.0.0.1 at 2018-12-12 13:50:07 +0000
+Processing by Api::V1::ShiftsController#destroy as HTML
+  Parameters: {"id"=>"id"}
+  [1m[36mShift Load (0.1ms)[0m  [1m[34mSELECT  "shifts".* FROM "shifts" WHERE "shifts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:50:07 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "d8kqstoB-u8CsMHqrGeJ"]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$TUnbIbYmfOPHnaJTqu409uAZiRnh3BNQvP/o4tSYTR/eYZq4ly40C"], ["created_at", "2018-12-12 13:50:07.158101"], ["updated_at", "2018-12-12 13:50:07.158101"], ["authentication_token", "d8kqstoB-u8CsMHqrGeJ"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:50:07 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "JGmxVsoyePCY8n6VQ8zA"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$JZ6Z8w9j/yA7AsoqS5OfhutVj1N/YHadXiSK8Tg7hRUs7oHAWwJUm"], ["created_at", "2018-12-12 13:50:07.168820"], ["updated_at", "2018-12-12 13:50:07.168820"], ["authentication_token", "JGmxVsoyePCY8n6VQ8zA"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (1.6ms)[0m  [1m[31mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (1.0ms)[0m  [1m[31mDELETE FROM "ar_internal_metadata";[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'ar_internal_metadata';[0m
+  [1m[35m (0.8ms)[0m  [1m[31mDELETE FROM "shifts";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.3ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'shifts';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:50:49 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "j-pYQx8q7wK_UczpNLZ2"]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$HCTEJz.VwXfeH2MyjY1koePc00L5iChckbV4NtuMJMocs44VvgIcu"], ["created_at", "2018-12-12 13:50:49.504039"], ["updated_at", "2018-12-12 13:50:49.504039"], ["authentication_token", "j-pYQx8q7wK_UczpNLZ2"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 23ms (Views: 0.4ms | ActiveRecord: 1.3ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:50:49 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:50:49+00:00", "end_time"=>"2018-12-12T13:50:49+00:00"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:50:49"], ["end_time", "2018-12-12 13:50:49"], ["created_at", "2018-12-12 13:50:49.522970"], ["updated_at", "2018-12-12 13:50:49.522970"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:50:49 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "HiuXWhVUXu-wWXdhrinW"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$2iVJHVIQCG0FGOOqU9vRtOXidDhGsJj7Mj8TtPHbfYuzAghzHAPR."], ["created_at", "2018-12-12 13:50:49.533599"], ["updated_at", "2018-12-12 13:50:49.533599"], ["authentication_token", "HiuXWhVUXu-wWXdhrinW"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:50:49 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:50:49+00:00", "end_time"=>"2018-12-12T13:50:49+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:50:49"], ["end_time", "2018-12-12 13:50:49"], ["created_at", "2018-12-12 13:50:49.538891"], ["updated_at", "2018-12-12 13:50:49.538891"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 3ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+Started GET "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:50:49 +0000
+Processing by Api::V1::ShiftsController#index as HTML
+  [1m[36mShift Load (0.1ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts"[0m
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:50:49 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "gmDUJyiytZsW4nr8cs3y"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$qPeZfbZo/zvsuXYUP8zBh.kpajhc70qgGSJYNsKZfRRQHWRCIkG/y"], ["created_at", "2018-12-12 13:50:49.550367"], ["updated_at", "2018-12-12 13:50:49.550367"], ["authentication_token", "gmDUJyiytZsW4nr8cs3y"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.4ms | ActiveRecord: 0.7ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:50:49 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:50:49+00:00", "end_time"=>"2018-12-12T13:50:49+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:50:49"], ["end_time", "2018-12-12 13:50:49"], ["created_at", "2018-12-12 13:50:49.556077"], ["updated_at", "2018-12-12 13:50:49.556077"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:50:49 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test1@test.com", "start_time"=>"2018-12-12T13:50:49+00:00", "end_time"=>"2018-12-12T13:50:49+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.1ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test1@test.com"], ["start_time", "2018-12-12 13:50:49"], ["end_time", "2018-12-12 13:50:49"], ["created_at", "2018-12-12 13:50:49.560200"], ["updated_at", "2018-12-12 13:50:49.560200"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 3ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+Started DELETE "/api/v1/shifts/id" for 127.0.0.1 at 2018-12-12 13:50:49 +0000
+Processing by Api::V1::ShiftsController#destroy as HTML
+  Parameters: {"id"=>"id"}
+  [1m[36mShift Load (0.1ms)[0m  [1m[34mSELECT  "shifts".* FROM "shifts" WHERE "shifts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:50:49 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "wxhHmxErnEZMsisEKhbL"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$0/792WoJ/AasHqZeg2/dS.13GPQOuBKyECvvDkfti8SKPzSEu5wUu"], ["created_at", "2018-12-12 13:50:49.571412"], ["updated_at", "2018-12-12 13:50:49.571412"], ["authentication_token", "wxhHmxErnEZMsisEKhbL"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 7ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:50:49 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "tMCgxujdj9NMp8cHdYHJ"]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$V.WIFIABuBGgjZm5Z4SPIeaUwi2k3hFOhEWJk5cArMWBTw1JLlEbK"], ["created_at", "2018-12-12 13:50:49.582305"], ["updated_at", "2018-12-12 13:50:49.582305"], ["authentication_token", "tMCgxujdj9NMp8cHdYHJ"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 7ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (1.5ms)[0m  [1m[31mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.8ms)[0m  [1m[31mDELETE FROM "ar_internal_metadata";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'ar_internal_metadata';[0m
+  [1m[35m (0.8ms)[0m  [1m[31mDELETE FROM "shifts";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'shifts';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:51:24 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "N_w4gshU2y8jNJ8XURxu"]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$BtjYIEQ9ZpHo1NVkplrLNe/OxWip5eIj5GiXUrNDHNVJ2uORwT3fK"], ["created_at", "2018-12-12 13:51:24.312192"], ["updated_at", "2018-12-12 13:51:24.312192"], ["authentication_token", "N_w4gshU2y8jNJ8XURxu"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 25ms (Views: 0.5ms | ActiveRecord: 1.7ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:51:24 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:51:24+00:00", "end_time"=>"2018-12-12T13:51:24+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.1ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:51:24"], ["end_time", "2018-12-12 13:51:24"], ["created_at", "2018-12-12 13:51:24.331811"], ["updated_at", "2018-12-12 13:51:24.331811"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:51:24 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "ofY7zY6tLQ4dMuJQyxWd"]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$l/maWxisTfI1ZlgRW31usOinyCiu.NF/qRp5hNA8O5G/xiLe08zyS"], ["created_at", "2018-12-12 13:51:24.342112"], ["updated_at", "2018-12-12 13:51:24.342112"], ["authentication_token", "ofY7zY6tLQ4dMuJQyxWd"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:51:24 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:51:24+00:00", "end_time"=>"2018-12-12T13:51:24+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:51:24"], ["end_time", "2018-12-12 13:51:24"], ["created_at", "2018-12-12 13:51:24.348076"], ["updated_at", "2018-12-12 13:51:24.348076"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 4ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+Started GET "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:51:24 +0000
+Processing by Api::V1::ShiftsController#index as HTML
+  [1m[36mShift Load (0.2ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts"[0m
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:51:24 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "sTbcVEEXxraY6zNazcxL"]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$IuEquIoMkXPPOqO02YZWhesWyNE7T0685kXe4572cThEYIMocTCPe"], ["created_at", "2018-12-12 13:51:24.361081"], ["updated_at", "2018-12-12 13:51:24.361081"], ["authentication_token", "sTbcVEEXxraY6zNazcxL"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:51:24 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:51:24+00:00", "end_time"=>"2018-12-12T13:51:24+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.1ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:51:24"], ["end_time", "2018-12-12 13:51:24"], ["created_at", "2018-12-12 13:51:24.366982"], ["updated_at", "2018-12-12 13:51:24.366982"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 3ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:51:24 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test1@test.com", "start_time"=>"2018-12-12T13:51:24+00:00", "end_time"=>"2018-12-12T13:51:24+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.1ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test1@test.com"], ["start_time", "2018-12-12 13:51:24"], ["end_time", "2018-12-12 13:51:24"], ["created_at", "2018-12-12 13:51:24.371899"], ["updated_at", "2018-12-12 13:51:24.371899"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 4ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+Started DELETE "/api/v1/shifts/id" for 127.0.0.1 at 2018-12-12 13:51:24 +0000
+Processing by Api::V1::ShiftsController#destroy as HTML
+  Parameters: {"id"=>"id"}
+  [1m[36mShift Load (0.1ms)[0m  [1m[34mSELECT  "shifts".* FROM "shifts" WHERE "shifts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:51:24 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "aPvnnbx32ZQExs3Z-Es4"]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$.B4o4.0c5eh5x8d.Xy8ePeywFy6miKbvgNuOVntup3tJEZA0XkU0i"], ["created_at", "2018-12-12 13:51:24.383443"], ["updated_at", "2018-12-12 13:51:24.383443"], ["authentication_token", "aPvnnbx32ZQExs3Z-Es4"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:51:24 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "TBsXfezmsBqU8mqJnZF9"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$GPkxznnNoOLbd63kNA0h2.eOa8jP85SjOIj7IDHgTfeQrVYe0xcpa"], ["created_at", "2018-12-12 13:51:24.392761"], ["updated_at", "2018-12-12 13:51:24.392761"], ["authentication_token", "TBsXfezmsBqU8mqJnZF9"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.3ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (1.5ms)[0m  [1m[31mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.8ms)[0m  [1m[31mDELETE FROM "ar_internal_metadata";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'ar_internal_metadata';[0m
+  [1m[35m (0.8ms)[0m  [1m[31mDELETE FROM "shifts";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'shifts';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:52:12 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "tjXVAojrRY3bwm1y4w42"]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$FFShW5Ta.OD26OxyWTpeL.wndis7uSCu7rPGog.peDe4tTjpBWV2."], ["created_at", "2018-12-12 13:52:12.969126"], ["updated_at", "2018-12-12 13:52:12.969126"], ["authentication_token", "tjXVAojrRY3bwm1y4w42"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 24ms (Views: 0.4ms | ActiveRecord: 1.3ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:52:12 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:52:12+00:00", "end_time"=>"2018-12-12T13:52:12+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:52:12"], ["end_time", "2018-12-12 13:52:12"], ["created_at", "2018-12-12 13:52:12.987141"], ["updated_at", "2018-12-12 13:52:12.987141"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:52:12 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "euXyTyDaQtcjNdw-Fp-K"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$eqBs7ZsFb0D8IoxufJ9G9emdZOxeIN0z4R/lunEB6/Dq6G5yZz1Ku"], ["created_at", "2018-12-12 13:52:12.997616"], ["updated_at", "2018-12-12 13:52:12.997616"], ["authentication_token", "euXyTyDaQtcjNdw-Fp-K"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.5ms | ActiveRecord: 0.7ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:52:13 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:52:13+00:00", "end_time"=>"2018-12-12T13:52:13+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:52:13"], ["end_time", "2018-12-12 13:52:13"], ["created_at", "2018-12-12 13:52:13.003517"], ["updated_at", "2018-12-12 13:52:13.003517"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+Started GET "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:52:13 +0000
+Processing by Api::V1::ShiftsController#index as HTML
+  [1m[36mShift Load (0.1ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts"[0m
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:52:13 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "Bjf2uKqYfXxnxst-Un-e"]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$bInQR0.UhqjDFTM0xTNQKemL8z77.lCeAdz7yT3Q7dXlXE0.Uz8Ey"], ["created_at", "2018-12-12 13:52:13.015210"], ["updated_at", "2018-12-12 13:52:13.015210"], ["authentication_token", "Bjf2uKqYfXxnxst-Un-e"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:52:13 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:52:13+00:00", "end_time"=>"2018-12-12T13:52:13+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:52:13"], ["end_time", "2018-12-12 13:52:13"], ["created_at", "2018-12-12 13:52:13.020354"], ["updated_at", "2018-12-12 13:52:13.020354"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:52:13 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test1@test.com", "start_time"=>"2018-12-12T13:52:13+00:00", "end_time"=>"2018-12-12T13:52:13+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test1@test.com"], ["start_time", "2018-12-12 13:52:13"], ["end_time", "2018-12-12 13:52:13"], ["created_at", "2018-12-12 13:52:13.024801"], ["updated_at", "2018-12-12 13:52:13.024801"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 4ms (Views: 0.4ms | ActiveRecord: 0.5ms)
+Started DELETE "/api/v1/shifts/id" for 127.0.0.1 at 2018-12-12 13:52:13 +0000
+Processing by Api::V1::ShiftsController#destroy as HTML
+  Parameters: {"1"=>"1", "id"=>"id"}
+  [1m[36mShift Load (0.1ms)[0m  [1m[34mSELECT  "shifts".* FROM "shifts" WHERE "shifts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:52:13 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "MiWVVZYvk79yJ9ivEqPC"]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$RINDFukOSjSJ/2Sz4VsGvOkpJrhZ0U96dv9FdDfw/rt/4D1JsSeje"], ["created_at", "2018-12-12 13:52:13.037861"], ["updated_at", "2018-12-12 13:52:13.037861"], ["authentication_token", "MiWVVZYvk79yJ9ivEqPC"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.4ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:52:13 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "wxk_79AVPZoysNCGWxRh"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$usQaXMDmMwMThuLnQbp5jOAtHURD35W8NVnyDjjA.DrnDwSb7VEP2"], ["created_at", "2018-12-12 13:52:13.048789"], ["updated_at", "2018-12-12 13:52:13.048789"], ["authentication_token", "wxk_79AVPZoysNCGWxRh"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 7ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (1.5ms)[0m  [1m[31mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.8ms)[0m  [1m[31mDELETE FROM "ar_internal_metadata";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'ar_internal_metadata';[0m
+  [1m[35m (0.8ms)[0m  [1m[31mDELETE FROM "shifts";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'shifts';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:52:41 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "M1vdjsud4yHRcsG3TrvL"]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$66Dqy8ZVR4B8sQuGJPbDoOuAm3PpACwa/YIG0YGPjUayGAQhb204S"], ["created_at", "2018-12-12 13:52:41.632585"], ["updated_at", "2018-12-12 13:52:41.632585"], ["authentication_token", "M1vdjsud4yHRcsG3TrvL"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 25ms (Views: 0.4ms | ActiveRecord: 1.6ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:52:41 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:52:41+00:00", "end_time"=>"2018-12-12T13:52:41+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:52:41"], ["end_time", "2018-12-12 13:52:41"], ["created_at", "2018-12-12 13:52:41.650864"], ["updated_at", "2018-12-12 13:52:41.650864"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 14ms (Views: 0.3ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:52:41 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "wy6DRWgq_9yxDVkrLk2E"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$lvYwBc9M1OZh.ko3T1Vbg.a34pqIPoRGbHP57IRmqjE/b3hdxbASW"], ["created_at", "2018-12-12 13:52:41.661160"], ["updated_at", "2018-12-12 13:52:41.661160"], ["authentication_token", "wy6DRWgq_9yxDVkrLk2E"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:52:41 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:52:41+00:00", "end_time"=>"2018-12-12T13:52:41+00:00"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:52:41"], ["end_time", "2018-12-12 13:52:41"], ["created_at", "2018-12-12 13:52:41.665976"], ["updated_at", "2018-12-12 13:52:41.665976"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+Started GET "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:52:41 +0000
+Processing by Api::V1::ShiftsController#index as HTML
+  [1m[36mShift Load (0.1ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts"[0m
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:52:41 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "YSVqreZHpt2qp-9kK3Pn"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$AaDGHdLGc55KDY5P3vt5kue4ujLT/WuizR6N.PkzF.VkjQgDwaaJS"], ["created_at", "2018-12-12 13:52:41.676667"], ["updated_at", "2018-12-12 13:52:41.676667"], ["authentication_token", "YSVqreZHpt2qp-9kK3Pn"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:52:41 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:52:41+00:00", "end_time"=>"2018-12-12T13:52:41+00:00"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:52:41"], ["end_time", "2018-12-12 13:52:41"], ["created_at", "2018-12-12 13:52:41.681313"], ["updated_at", "2018-12-12 13:52:41.681313"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:52:41 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test1@test.com", "start_time"=>"2018-12-12T13:52:41+00:00", "end_time"=>"2018-12-12T13:52:41+00:00"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.1ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test1@test.com"], ["start_time", "2018-12-12 13:52:41"], ["end_time", "2018-12-12 13:52:41"], ["created_at", "2018-12-12 13:52:41.685012"], ["updated_at", "2018-12-12 13:52:41.685012"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+Started DELETE "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:52:41 +0000
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:52:41 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "drMsL7Su_E3VMHRUWBty"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$d/g.2KpWm52miNVEJcv7CeahyuNKFvmyMQRYgq2Iwvsf/mMsl7EBi"], ["created_at", "2018-12-12 13:52:41.693937"], ["updated_at", "2018-12-12 13:52:41.693937"], ["authentication_token", "drMsL7Su_E3VMHRUWBty"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:52:41 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "5aTGdodofpxTFLRssLJu"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$BQl1nwds/gGPq5suw1YVkexEAsYjw5vDC21l4RNOVbnyYp850vBca"], ["created_at", "2018-12-12 13:52:41.703544"], ["updated_at", "2018-12-12 13:52:41.703544"], ["authentication_token", "5aTGdodofpxTFLRssLJu"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (1.5ms)[0m  [1m[31mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[35m (0.9ms)[0m  [1m[31mDELETE FROM "ar_internal_metadata";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'ar_internal_metadata';[0m
+  [1m[35m (0.9ms)[0m  [1m[31mDELETE FROM "shifts";[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'shifts';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:53:36 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "BwAG2eLqTHFngyLLxGEo"]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$Cmo2ZO3.zr6XjMSbRoidLu3QR1oJaqokxGyIFBDU6dmbujbdQrnr6"], ["created_at", "2018-12-12 13:53:36.394403"], ["updated_at", "2018-12-12 13:53:36.394403"], ["authentication_token", "BwAG2eLqTHFngyLLxGEo"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 23ms (Views: 0.5ms | ActiveRecord: 1.2ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:53:36 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:53:36+00:00", "end_time"=>"2018-12-12T13:53:36+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.1ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:53:36"], ["end_time", "2018-12-12 13:53:36"], ["created_at", "2018-12-12 13:53:36.413902"], ["updated_at", "2018-12-12 13:53:36.413902"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 15ms (Views: 0.3ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:53:36 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "k6SnmMbJ7ysNVpbZBgf-"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$mzhEocuGF3FT2j92mwdUauplHX.9TgPsycJRhcRTOI6lP.3VV2L7i"], ["created_at", "2018-12-12 13:53:36.424285"], ["updated_at", "2018-12-12 13:53:36.424285"], ["authentication_token", "k6SnmMbJ7ysNVpbZBgf-"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 5ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:53:36 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:53:36+00:00", "end_time"=>"2018-12-12T13:53:36+00:00"}
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:53:36"], ["end_time", "2018-12-12 13:53:36"], ["created_at", "2018-12-12 13:53:36.429187"], ["updated_at", "2018-12-12 13:53:36.429187"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 4ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+Started GET "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:53:36 +0000
+Processing by Api::V1::ShiftsController#index as HTML
+  [1m[36mShift Load (0.1ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts"[0m
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:53:36 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "RNf2aZn5QkPob8HRfPPr"]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$4XpeCVIkHRagqz8rlD5ETOAmhP2L69ytUlnBRU.BQ5Ew1n9ughIVG"], ["created_at", "2018-12-12 13:53:36.442445"], ["updated_at", "2018-12-12 13:53:36.442445"], ["authentication_token", "RNf2aZn5QkPob8HRfPPr"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.3ms | ActiveRecord: 0.8ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:53:36 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test@test.com", "start_time"=>"2018-12-12T13:53:36+00:00", "end_time"=>"2018-12-12T13:53:36+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.2ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test@test.com"], ["start_time", "2018-12-12 13:53:36"], ["end_time", "2018-12-12 13:53:36"], ["created_at", "2018-12-12 13:53:36.448339"], ["updated_at", "2018-12-12 13:53:36.448339"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 4ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+Started POST "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:53:36 +0000
+Processing by Api::V1::ShiftsController#create as HTML
+  Parameters: {"title"=>"test1@test.com", "start_time"=>"2018-12-12T13:53:36+00:00", "end_time"=>"2018-12-12T13:53:36+00:00"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mShift Create (0.1ms)[0m  [1m[32mINSERT INTO "shifts" ("title", "start_time", "end_time", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", "test1@test.com"], ["start_time", "2018-12-12 13:53:36"], ["end_time", "2018-12-12 13:53:36"], ["created_at", "2018-12-12 13:53:36.452417"], ["updated_at", "2018-12-12 13:53:36.452417"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+Started DELETE "/api/v1/shifts/1" for 127.0.0.1 at 2018-12-12 13:53:36 +0000
+Processing by Api::V1::ShiftsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mShift Load (0.1ms)[0m  [1m[34mSELECT  "shifts".* FROM "shifts" WHERE "shifts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mShift Destroy (0.1ms)[0m  [1m[31mDELETE FROM "shifts" WHERE "shifts"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 200 OK in 2ms (ActiveRecord: 0.3ms)
+Started GET "/api/v1/shifts" for 127.0.0.1 at 2018-12-12 13:53:36 +0000
+Processing by Api::V1::ShiftsController#index as HTML
+  [1m[36mShift Load (0.1ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts"[0m
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:53:36 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "qr7Mu6cigKY6vsNf8Pzf"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$o91oIUpfkWf7eBxUMjIYY.8BPZ1RkQuSNj8l8zOnR.PoAlfBEuvf2"], ["created_at", "2018-12-12 13:53:36.468053"], ["updated_at", "2018-12-12 13:53:36.468053"], ["authentication_token", "qr7Mu6cigKY6vsNf8Pzf"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 7ms (Views: 0.4ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started POST "/api/v1/sign_up" for 127.0.0.1 at 2018-12-12 13:53:36 +0000
+Processing by Api::V1::RegistrationsController#create as HTML
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."authentication_token" = ?[0m  [["authentication_token", "MGxNMsvxQahNeesspBdA"]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "authentication_token") VALUES (?, ?, ?, ?, ?)[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$04$RRKl.DrpO2x/61w8y/pECe5aexVYQxwauBx/rxmnxxK7LuUTEh8Bq"], ["created_at", "2018-12-12 13:53:36.479895"], ["updated_at", "2018-12-12 13:53:36.479895"], ["authentication_token", "MGxNMsvxQahNeesspBdA"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Completed 201 Created in 6ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m

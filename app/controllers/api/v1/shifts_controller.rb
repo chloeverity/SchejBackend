@@ -2,7 +2,6 @@ class Api::V1::ShiftsController < ApplicationController
 
   def index
     @shifts = Shift.all
-    # p @shifts.to_json
     render json: @shifts, status: :ok
   end
 
@@ -14,7 +13,8 @@ class Api::V1::ShiftsController < ApplicationController
   end
 
   def destroy
-    @shift = Shift.find(1)
+    @shift = Shift.find(params[:id])
+
     if @shift.destroy
       head(:ok)
     else

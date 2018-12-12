@@ -26,8 +26,8 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
     it 'deletes a shift and its information' do
       post '/api/v1/shifts', :params => {'title' => 'test@test.com', 'start_time' => DateTime.now, 'end_time' => DateTime.now}
       post '/api/v1/shifts', :params => {'title' => 'test1@test.com', 'start_time' => DateTime.now, 'end_time' => DateTime.now}
-      p response.body
-      delete '/api/v1/shifts/id'
+      id = 1
+      delete "/api/v1/shifts/#{id}"
       get '/api/v1/shifts'
       expect(JSON.parse(response.body).first).not_to include('title' => 'test@test.com')
     end
