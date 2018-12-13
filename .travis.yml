@@ -16,3 +16,4 @@ IL1q13omXNZAGpMtpj1/vLSx3XK2EnV//pzCelKXokDlZn49ZVaeaE=
   app: schej-backend
   on:
     repo: chloeverity/SchejBackend
+  run: rails db:migrate
