@@ -1,35 +1,16 @@
-def sign_up(user_1 = true)
-  if user_1
-    params = {'email' => 'test@test.com', 'password' => 'testpassword',
-              'password_confirmation' => 'testpassword',
-              'organisation' => 'Makers Academy', 'mobile' => '12345678910'}
-  else
-    params = {'email' => 'test2@test.com', 'password' => 'testpassword',
-              'password_confirmation' => 'testpassword',
-              'organisation' => 'MacDonalds','mobile' => '12345678910'}
-  end
+def sign_up(email)
+  params = {'email' => email, 'password' => 'testpassword',
+            'password_confirmation' => 'testpassword',
+            'organisation' => 'MacDonalds','mobile' => '12345678910'}
   post '/api/v1/sign_up', :params => params
 end
 
-def sign_in(user_1 = true)
-  if user_1
-    params = {'email' => 'test@test.com', 'password' => 'testpassword',
-              'password_confirmation' => 'testpassword'}
-  else
-    params = {'email' => 'test2@test.com', 'password' => 'testpassword',
-              'password_confirmation' => 'testpassword'}
-  end
+def sign_in(email)
+  params = {'email' => email, 'password' => 'testpassword'}
   post '/api/v1/sign_in', :params => params
 end
 
-def post_shift(user_id, user_1 = true)
-  if user_1
-    org = "Makers Academy"
-    email = "test@test.com"
-  else
-    org = "MacDonalds"
-    email = "test2@test.com"
-  end
+def post_shift(user_id, org, email)
   params = {'title' => email, 'start_time' => 1517540400000,
             'end_time' => 1517540400000, 'user_id' => user_id,
             'organisation' => org }

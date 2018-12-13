@@ -1,42 +1,46 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::ShiftsController, type: :request do
-  let(:user) { double :current_user }
+  let(:user_1_email) {'test@test.com'}
+  let(:user_1_org) {'Makers Academy'}
+  let(:user_2_email) {'test2@test.com'}
+  let(:user_2_org) {'MacDonalds'}
 
   before(:each) do
-    sign_up
-    @user_id = (JSON.parse(response.body))["id"]
-    post_shift(@user_id)
+    sign_up('test@test.com')
+    @user_1_id = (JSON.parse(response.body))["id"]
+    post_shift(@user_1_id, user_1_org, user_1_email)
   end
 
   describe 'creating a shift' do
     it 'creates a shift with title, start time and end time' do
-      expect(JSON.parse(response.body)).to include "title" => "test@test.com"
+      expect(JSON.parse(response.body)).to include "title" => user_1_email
     end
   end
 
   describe 'index' do
     it "shows all shifts for user's organisation" do
       get_shifts(organisation = 'Makers Academy')
-      expect(JSON.parse(response.body).first).to include('title' => 'test@test.com')
+      expect(JSON.parse(response.body).first).to include('title' => user_1_email)
     end
 
-    it "shows all shifts for user's organisation where more than one organisation exists" do
-      sign_up(user_1 = false)
+    it "shows all shifts for user 2's organisation and not user 1's organisatio" do
+      sign_up('test2@test.com')
       user_id2 = (JSON.parse(response.body))["id"]
-      post_shift(user_id2, user_1 = false)
-      get_shifts(organisation = 'MacDonalds')
-      expect(JSON.parse(response.body).first).not_to include('title' => 'test@test.com')
+      post_shift(user_id2, user_2_org, user_2_email)
+      get_shifts(organisation = user_2_org)
+      expect(JSON.parse(response.body).length).to eq 1
+      expect(JSON.parse(response.body).first).not_to include('title' => user_1_email)
     end
 
   end
   describe 'deleting a shift' do
-    it 'deletes a shift and its information' do
-      post_shift(@user_id)
+    it 'deletes a second shift and its information' do
+      post_shift(@user_1_id, user_1_org, user_1_email)
       id = (JSON.parse(response.body))["id"]
       delete_shift(id)
-      get_shifts(organisation = 'Makers Academy')
-      expect(JSON.parse(response.body).length).to eq 1 
+      get_shifts(organisation = user_1_org)
+      expect(JSON.parse(response.body).length).to eq 1
     end
   end
 end
