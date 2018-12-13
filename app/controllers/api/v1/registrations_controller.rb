@@ -3,9 +3,12 @@
 class Api::V1::RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
+
   def create
     user = User.new(user_params)
+    user
     if user.save
+      user.save
       render json: user.as_json(auth_token: user.authentication_token, email: user.email, name: user.name, mobile: user.mobile, organisation: user.organisation), status: 201
       return
     else

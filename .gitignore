@@ -1,2 +1,4 @@
-coverage
-tmp
+/coverage
+/tmp
+/log/development.log
+/log/test.log
