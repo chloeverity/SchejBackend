@@ -36,7 +36,7 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
       id = (JSON.parse(response.body))["id"]
       delete_shift(id)
       get_shifts(organisation = 'Makers Academy')
-      expect(JSON.parse(response.body).first).not_to include('id' => id)
+      expect(JSON.parse(response.body).length).to eq 1 
     end
   end
 end
