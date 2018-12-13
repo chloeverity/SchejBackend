@@ -1,5 +1,6 @@
-class Api::V1::ShiftsController < ApplicationController
+# frozen_string_literal: true
 
+class Api::V1::ShiftsController < ApplicationController
   def index
     @shifts = Shift.where(organisation: params[:organisation])
     render json: @shifts, status: :ok
@@ -7,7 +8,7 @@ class Api::V1::ShiftsController < ApplicationController
 
   def create
     organisation = User.where(id: params[:user_id]).pluck(:organisation).first
-    @shift = Shift.new(shift_params.merge({:organisation => organisation}))
+    @shift = Shift.new(shift_params.merge(organisation: organisation))
     @shift.save!
 
     render json: @shift.as_json(title: @shift.title, start_time: @shift.start_time, end_time: @shift.end_time, user_id: @shift.user_id, organisation: @shift.organisation, email: @shift.email), status: :created
@@ -44,7 +45,7 @@ class Api::V1::ShiftsController < ApplicationController
   end
 
   def swap_params(shift1, shift2)
-    { shift1_hash: {title: shift2.title, start_time: shift1.start_time, end_time: shift1.end_time, user_id: shift2.user_id, email: shift2.email},
-    shift2_hash: {title: shift1.title, start_time: shift2.start_time, end_time: shift2.end_time, user_id: shift1.user_id, email: shift1.email} }
+    { shift1_hash: { title: shift2.title, start_time: shift1.start_time, end_time: shift1.end_time, user_id: shift2.user_id, email: shift2.email },
+      shift2_hash: { title: shift1.title, start_time: shift2.start_time, end_time: shift2.end_time, user_id: shift1.user_id, email: shift1.email } }
   end
 end
