@@ -45,13 +45,20 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
     end
   end
 
-  # describe 'swapping a shift' do
-  #   it "swaps a user's shift with another user's" do
-  #     sign_up('test2@test.com')
-  #     user_id2 = (JSON.parse(response.body))["id"]
-  #     post_shift(user_id2, user_2_org, user_2_email)
-  #     shift_2_id = (JSON.parse(response.body))["id"]
-  #     patch "/api/v1/shifts/#{@shift_1_id}", :params => {'id' => }
-  #   end
-  # end
+  describe 'swapping a shift' do
+    it "swaps a user's shift with another user's" do
+      sign_up('test2@test.com', 'MacDonalds')
+      user_id2 = (JSON.parse(response.body))["id"]
+      post_shift(user_id2, user_2_org, user_2_email)
+      shift_2_id = (JSON.parse(response.body))["id"]
+      patch "/api/v1/shifts/#{@shift_1_id}", :params => {'other_id' => shift_2_id}
+
+      shift2 = Shift.find(shift_2_id)
+      expect(shift2.user_id).to eq @user_1_id
+      expect(shift2.title).to eq user_1_email
+      shift1 = Shift.find(@shift_1_id)
+      expect(shift1.user_id).to eq user_id2
+      expect(shift1.title).to eq user_2_email
+    end
+  end
 end
