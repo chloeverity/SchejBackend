@@ -1,7 +1,7 @@
 class Api::V1::ShiftsController < ApplicationController
 
   def index
-    @shifts = Shift.all
+    @shifts = Shift.where(organisation: params[:organisation])
     render json: @shifts, status: :ok
   end
 
@@ -9,7 +9,7 @@ class Api::V1::ShiftsController < ApplicationController
     @shift = Shift.new(shift_params)
     @shift.save!
 
-    render json: @shift.as_json(title: @shift.title, start_time: @shift.start_time, end_time: @shift.end_time, user_id: @shift.user_id), status: :created
+    render json: @shift.as_json(title: @shift.title, start_time: @shift.start_time, end_time: @shift.end_time, user_id: @shift.user_id, organisation: @shift.organisation), status: :created
   end
 
   def destroy
@@ -25,6 +25,6 @@ class Api::V1::ShiftsController < ApplicationController
   private
 
   def shift_params
-    params.permit(:title, :start_time, :end_time, :user_id)
+    params.permit(:title, :start_time, :end_time, :user_id, :organisation)
   end
 end
