@@ -3,7 +3,7 @@
 class Api::V1::ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Basic::ControllerMethods
   include ActionController::ImplicitRender
-  before_filter :authenticate
+  before_action :authenticate
 
   protected
 
