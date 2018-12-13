@@ -1,0 +1,18 @@
+language: ruby
+cache:
+- bundler
+before_script:
+- bundle exec rake db:create
+- bundle exec rake db:migrate
+- bundle exec rake assets:precompile
+deploy:
+  provider: heroku
+  api_key:
+    secure: CYl3+awndu+mqJowuRQzyJ8y+pLkKysfDNaZxZN7D9HUTg4/C13UE9TSedyIc39dx/aBXGGyEV9KTHvpD0Bf68q7uJ+43m8DOk53WEJSfF1qXW8T0p0b8
+DFQFhMR7bcDs8NX2/mbYh5JCBMpARghSb4Ima2rrHUvHtRA8epXM56cCly80JWppA3SwMCsrLjPMjihgqYnk31a6uB+RasH3xmKVcY9OPERXq/HOdXZeB7tdy4w7ln7z
+KuAJnBhz1RYzTPe0kxSLbT1CubBEAxZ7boaNLxA4wccciDmkZfH5pqGcev3ct+7BEkY1xSlANIPCnXSoF8pmZ1TK4r3TEdIoJT33hveuE5u/oxA9UKO2qftXYXtix4ZN3Aesb3E//5TQ+n3bc0rvltUzAWcVTrAH13C19649xLZZC/6baz7Yn9ksnE4QccOS+ZVosKMtZvdIfTDR9ZfJZNm1uKFS824WWOmNObmvJcGUpOO2e/pCV1WLn8JEwQvN
+GNlYSje3LtnqJ+jGW7RoZBCgI1V2t2wRMN9SmaYbqTrmPnQDjo8Oac9Ac0ZFo+drnmd1hp1lY3X8yOPt0AW59Jx5a+05lqEjKDHeGsmdGgQX13iQ+elsjniJFq3b2hrr
+IL1q13omXNZAGpMtpj1/vLSx3XK2EnV//pzCelKXokDlZn49ZVaeaE=
+  app: schej-backend
+  on:
+    repo: chloeverity/SchejBackend
