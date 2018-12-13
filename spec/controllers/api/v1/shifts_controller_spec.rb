@@ -7,9 +7,10 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
   let(:user_2_org) {'MacDonalds'}
 
   before(:each) do
-    sign_up('test@test.com')
+    sign_up('test@test.com', 'Makers Academy')
     @user_1_id = (JSON.parse(response.body))["id"]
     post_shift(@user_1_id, user_1_org, user_1_email)
+    @shift_1_id = (JSON.parse(response.body))["id"]
   end
 
   describe 'creating a shift' do
@@ -25,7 +26,7 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
     end
 
     it "shows all shifts for user 2's organisation and not user 1's organisatio" do
-      sign_up('test2@test.com')
+      sign_up('test2@test.com', 'MacDonalds')
       user_id2 = (JSON.parse(response.body))["id"]
       post_shift(user_id2, user_2_org, user_2_email)
       get_shifts(organisation = user_2_org)
@@ -43,4 +44,14 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
       expect(JSON.parse(response.body).length).to eq 1
     end
   end
+
+  # describe 'swapping a shift' do
+  #   it "swaps a user's shift with another user's" do
+  #     sign_up('test2@test.com')
+  #     user_id2 = (JSON.parse(response.body))["id"]
+  #     post_shift(user_id2, user_2_org, user_2_email)
+  #     shift_2_id = (JSON.parse(response.body))["id"]
+  #     patch "/api/v1/shifts/#{@shift_1_id}", :params => {'id' => }
+  #   end
+  # end
 end

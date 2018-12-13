@@ -1,7 +1,7 @@
-def sign_up(email)
+def sign_up(email, organisation)
   params = {'email' => email, 'password' => 'testpassword',
             'password_confirmation' => 'testpassword',
-            'organisation' => 'MacDonalds','mobile' => '12345678910'}
+            'organisation' => organisation,'mobile' => '12345678910'}
   post '/api/v1/sign_up', :params => params
 end
 
