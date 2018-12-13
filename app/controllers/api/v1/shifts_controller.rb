@@ -6,9 +6,8 @@ class Api::V1::ShiftsController < ApplicationController
   end
 
   def create
-    p @shift = Shift.new(shift_params)
-    p 'saved is'
-    p @shift.save!
+    @shift = Shift.new(shift_params)
+    @shift.save!
 
     render json: @shift.as_json(title: @shift.title, start_time: @shift.start_time, end_time: @shift.end_time, user_id: @shift.user_id), status: :created
   end

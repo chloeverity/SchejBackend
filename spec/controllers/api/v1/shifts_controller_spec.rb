@@ -19,17 +19,18 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
   describe 'index' do
 
     it 'shows all shifts' do
+      p User.all
       post '/api/v1/sign_in', :params => {'email' => 'test@test.com', 'password' => 'testpassword'}
-      post '/api/v1/shifts', :params => {'title' => 'test@test.com', 'start_time' => 1517540400000, 'end_time' => 1517540400000, 'user_id' => 1}
+      post '/api/v1/shifts', :params => {'title' => 'test@test.com', 'start_time' => 1517540400000, 'end_time' => 1517540400000, 'user_id' => 2}
       get '/api/v1/shifts'
       expect(JSON.parse(response.body).first).to include('title' => 'test@test.com')
     end
   end
   describe 'deleting a shift' do
     it 'deletes a shift and its information' do
-      post '/api/v1/shifts', :params => {'title' => 'test@test.com', 'start_time' => 1517540400000, 'end_time' => 1517540400000, 'user_id' => 1}
-      post '/api/v1/shifts', :params => {'title' => 'test1@test.com', 'start_time' => 1517540400000, 'end_time' => 1517540400000, 'user_id' => 1}
-      id = 1
+      post '/api/v1/shifts', :params => {'title' => 'test@test.com', 'start_time' => 1517540400000, 'end_time' => 1517540400000, 'user_id' => 3}
+      post '/api/v1/shifts', :params => {'title' => 'test1@test.com', 'start_time' => 1517540400000, 'end_time' => 1517540400000, 'user_id' => 3}
+      id = 3
       delete "/api/v1/shifts/#{id}"
       get '/api/v1/shifts'
       expect(JSON.parse(response.body).first).not_to include('title' => 'test@test.com')
