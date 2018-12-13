@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe Api::V1::RegistrationsController, type: :request do
   before do
-    sign_up('test@test.com')
+    sign_up('test@test.com', 'Makers Academy')
   end
 
   describe 'signing up' do
