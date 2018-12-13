@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :services
       devise_scope :user do
         get '/sign_in', to: 'sessions#new'
+        get '/sign_up', to: 'registrations#new'
         post '/sign_in', to: 'sessions#create'
         post '/sign_up' => 'registrations#create'
         delete '/sign_out', to: 'sessions#destroy'
