@@ -31,6 +31,12 @@ class Api::V1::ShiftsController < ApplicationController
     end
   end
 
+  def show_by_id
+    @shifts = Shift.where(user_id: params[:user_id])
+
+    render json: @shifts, status: :ok
+  end
+
   private
 
   def shift_params
