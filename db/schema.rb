@@ -19,7 +19,8 @@ ActiveRecord::Schema.define(version: 2018_12_14_102504) do
     t.integer "shift_requester_id"
     t.integer "shift_holder_id"
     t.text "comment"
-    t.integer "shift_id"
+    t.integer "requested_shift_id"
+    t.integer "current_shift_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,7 +54,8 @@ ActiveRecord::Schema.define(version: 2018_12_14_102504) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "requests", "shifts"
+  add_foreign_key "requests", "shifts", column: "current_shift_id"
+  add_foreign_key "requests", "shifts", column: "requested_shift_id"
   add_foreign_key "requests", "users", column: "shift_holder_id"
   add_foreign_key "requests", "users", column: "shift_requester_id"
   add_foreign_key "shifts", "users"

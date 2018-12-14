@@ -4,7 +4,9 @@ def sign_up_get_user_id(email, organisation, name)
   params = { 'email' => email, 'password' => 'testpassword',
              'password_confirmation' => 'testpassword',
              'organisation' => organisation, 'mobile' => '12345678910', 'name' => name }
-  post '/api/v1/sign_up', params: params
+  post '/api/v1/sign_up', params: { 'email' => email, 'password' => 'testpassword',
+             'password_confirmation' => 'testpassword',
+             'organisation' => organisation, 'mobile' => '12345678910', 'name' => name }
   return JSON.parse(response.body)['id']
 end
 
