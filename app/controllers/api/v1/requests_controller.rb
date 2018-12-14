@@ -14,6 +14,16 @@ class Api::V1::RequestsController < ApplicationController
     render json: @requests, status: :ok
   end
 
+  def destroy
+    @request = Request.find(params[:id])
+
+    if @request.destroy
+      head(:ok)
+    else
+      head(:unprocessable_entity)
+    end
+  end
+
   private
   def request_params
       params.permit(:shift_id, :shift_requester_id)

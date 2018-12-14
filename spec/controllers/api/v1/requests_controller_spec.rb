@@ -34,5 +34,14 @@ RSpec.describe Api::V1::RequestsController, type: :request do
     end
   end
 
+  describe 'delete request' do
+    it "delete the shift request once resolved" do
+      post '/api/v1/requests', params: { 'shift_id' => @shift_1_id, 'shift_requester_id' => @user_2_id }
+      @request_id = JSON.parse(response.body)['id']
+      delete	"/api/v1/requests/#{@request_id}"
+      get "/api/v1/requestsbyuser/#{@user_1_id}"
+      expect(JSON.parse(response.body).length).to eq 0
+    end
+  end
 
 end
