@@ -14,18 +14,14 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
   let(:user_3_name) { 'user3' }
 
   before(:each) do
-    sign_up(user_1_email, user_1_org, user_1_name)
-    @user_1_id = JSON.parse(response.body)['id']
-    post_shift(@user_1_id)
-    @shift_1_id = JSON.parse(response.body)['id']
+    @user_1_id = sign_up_get_user_id(user_1_email, user_1_org, user_1_name)
+    @shift_1_id = post_shift_get_id(@user_1_id)
   end
 
   describe 'swapping a shift' do
     it "swaps a user's shift with another user's" do
-      sign_up(user_2_email, user_2_org, user_2_name)
-      user_id2 = JSON.parse(response.body)['id']
-      post_shift(user_id2)
-      shift_2_id = JSON.parse(response.body)['id']
+      user_id2 = sign_up_get_user_id(user_2_email, user_2_org, user_2_name)
+      shift_2_id =post_shift_get_id(user_id2)
       patch "/api/v1/shifts/#{@shift_1_id}", params: { 'other_id' => shift_2_id }
 
       shift2 = Shift.find(shift_2_id)
@@ -41,12 +37,11 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
 
   describe "viewing a user's shifts" do
     it 'only shows shifts for a given user' do
-      post_shift(@user_1_id)
-      sign_up(user_3_email, user_3_org, user_3_name)
-      user_3_id = JSON.parse(response.body)['id']
-      post_shift(user_3_id)
+      post_shift_get_id(@user_1_id)
+      user_3_id = sign_up_get_user_id(user_3_email, user_3_org, user_3_name)
+      post_shift_get_id(user_3_id)
 
-      get "/api/v1/shiftsbyuser/#{@user_1_id}"
+      get_shifts_by_user(@user_1_id)
       expect(JSON.parse(response.body).length).to eq 2
       expect(JSON.parse(response.body).first).to include('user_id' => @user_1_id)
       expect(JSON.parse(response.body).last).to include('user_id' => @user_1_id)

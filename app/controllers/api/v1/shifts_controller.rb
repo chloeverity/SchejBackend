@@ -11,7 +11,7 @@ class Api::V1::ShiftsController < ApplicationController
     @shift = Shift.new(shift_params.merge(organisation: organisation))
     @shift.save!
 
-    render json: @shift.as_json(title: @shift.title, start_time: @shift.start_time, end_time: @shift.end_time, user_id: @shift.user_id, organisation: @shift.organisation, email: @shift.email), status: :created
+    render json: @shift.as_json(), status: :created
   end
 
   def update
@@ -33,7 +33,8 @@ class Api::V1::ShiftsController < ApplicationController
   end
 
   def show_by_id
-    @shifts = Shift.where(user_id: params[:user_id])
+    @user = User.find(params[:user_id])
+    @shifts = @user.shifts
 
     render json: @shifts, status: :ok
   end
