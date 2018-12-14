@@ -33,7 +33,8 @@ class Api::V1::ShiftsController < ApplicationController
   end
 
   def show_by_id
-    @shifts = Shift.where(user_id: params[:user_id])
+    @user = User.find(params[:user_id])
+    @shifts = @user.shifts
 
     render json: @shifts, status: :ok
   end
