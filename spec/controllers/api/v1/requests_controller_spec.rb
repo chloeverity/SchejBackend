@@ -23,11 +23,12 @@ RSpec.describe Api::V1::RequestsController, type: :request do
 
   describe 'show requests for user' do
     it 'shows all requests for a user where they are the current shift holder' do
-      post '/api/v1/requests', params: { 'shift_id' => @shift_1_id, 'shift_requester_id' => @user_2_id }
+      post '/api/v1/requests', params: { 'shift_id' => @shift_1_id, 'shift_requester_id' => @user_2_id, 'comment' => "clash with my dentist appointment"}
       get "/api/v1/requestsbyuser/#{@user_1_id}"
       expect(JSON.parse(response.body).length).to eq 1
       expect(JSON.parse(response.body).first).to include('shift_requester_id' => @user_2_id)
       expect(JSON.parse(response.body).last).to include('shift_id' => @shift_1_id)
+      expect(JSON.parse(response.body).last).to include 'comment' => "clash with my dentist appointment"
     end
   end
 

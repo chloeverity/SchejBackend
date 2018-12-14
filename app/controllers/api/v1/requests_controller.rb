@@ -26,6 +26,6 @@ class Api::V1::RequestsController < ApplicationController
 
   private
   def request_params
-      params.permit(:shift_id, :shift_requester_id)
+      params.permit(:shift_id, :shift_requester_id , :comment)
   end
 end
