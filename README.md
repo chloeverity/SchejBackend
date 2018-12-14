@@ -44,33 +44,31 @@ to test:
 ```
 > rspec
 ```
-
 <table>
-     <th>Description</th>
-     <th>Type of request</th>
-     <th>Request address</th>
-     <th>Params</th>
-     <th>Example call</th>
+    <tr>
+       <th>Description</th>
+       <th>Type of request</th>
+       <th>Request address</th>
+       <th>Params</th>
+       <th>Example call</th>
+     </tr>
      <tr>
+        <td> Sign Up to Schej</td>
+        <td> POST </td>
+        <td> https://schej-backend.herokuapp.com/api/v1/sign_up</td>
 
-      <td> Sign Up to Schej</td>
-      <td> POST </td>
-      <td> https://schej-backend.herokuapp.com/api/v1/sign_up</td>
-
-      <td> email, password, password_confirmation, organisation, name, mobile</td>
-      <td> post '/api/v1/sign_up', params: { 'email' => email, 'password' => 'testpassword',
-            'password_confirmation' => 'testpassword',
-            'organisation' => organisation, 'mobile' => '12345678910', 'name' => name }</td>
+        <td> email, password, password_confirmation, organisation, name, mobile</td>
+        <td> post '/api/v1/sign_up', params: { 'email' => email, 'password' => 'testpassword',
+              'password_confirmation' => 'testpassword',
+              'organisation' => organisation, 'mobile' => '12345678910', 'name' => name }</td>
       </tr>
       <tr>
-        <td>get shift by user</td>
-        <td>GET</td>
-        <td>https://schej-backend.herokuapp.com/api/v1/shiftsbyuser/:id</td>
-        <td>user id</td>
-        <td>get "/api/v1/shiftsbyuser/3"
-(where user id = 3)</td>
-
-
-
+          <td>get shift by user</td>
+          <td>GET</td>
+          <td>https://schej-backend.herokuapp.com/api/v1/shiftsbyuser/:id</td>
+          <td>user id</td>
+          <td>get "/api/v1/shiftsbyuser/3"
+  (where user id = 3)</td>
+      </tr>
 
    </table>
