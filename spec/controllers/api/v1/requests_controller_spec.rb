@@ -9,12 +9,9 @@ RSpec.describe Api::V1::RequestsController, type: :request do
   let(:user_2_name) { 'user2' }
 
   before(:each) do
-    sign_up(user_1_email, org, user_1_name)
-    @user_1_id = JSON.parse(response.body)['id']
-    post_shift(@user_1_id)
-    @shift_1_id = JSON.parse(response.body)['id']
-    sign_up(user_2_email, org, user_2_name)
-    @user_2_id = JSON.parse(response.body)['id']
+    @user_1_id =  sign_up_get_user_id(user_1_email, org, user_1_name)
+    @shift_1_id = post_shift_get_id(@user_1_id)
+    @user_2_id = sign_up_get_user_id(user_2_email, org, user_2_name)
   end
 
   describe 'new request' do

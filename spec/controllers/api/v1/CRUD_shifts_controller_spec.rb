@@ -11,10 +11,8 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
   let(:user_2_name) { 'user2' }
 
   before(:each) do
-    sign_up(user_1_email, user_1_org, user_1_name)
-    @user_1_id = JSON.parse(response.body)['id']
-    post_shift(@user_1_id)
-    @shift_1_id = JSON.parse(response.body)['id']
+    @user_1_id = sign_up_get_user_id(user_1_email, user_1_org, user_1_name)
+    @shift_1_id = post_shift_get_id(@user_1_id)
   end
 
   describe 'creating a shift' do
@@ -31,9 +29,8 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
     end
 
     it "shows all shifts for user 2's organisation and not user 1's organisatio" do
-      sign_up(user_2_email, user_2_org, user_2_name)
-      user_id2 = JSON.parse(response.body)['id']
-      post_shift(user_id2)
+      user_id2 = sign_up_get_user_id(user_2_email, user_2_org, user_2_name)
+      post_shift_get_id(user_id2)
       get_shifts(organisation = user_2_org)
       expect(JSON.parse(response.body).length).to eq 1
       expect(JSON.parse(response.body).first).not_to include('email' => user_1_email)

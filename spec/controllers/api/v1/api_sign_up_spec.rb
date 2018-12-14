@@ -7,7 +7,7 @@ RSpec.describe Api::V1::RegistrationsController, type: :request do
   let(:user_1_name) { 'user1' }
 
   before do
-    sign_up(user_1_email, user_1_org, user_1_name)
+    sign_up_get_user_id(user_1_email, user_1_org, user_1_name)
   end
 
   describe 'signing up' do
