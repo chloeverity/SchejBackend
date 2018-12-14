@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :shifts
       resources :problems
       resources :services
+      get '/shiftsbyuser/:user_id', to: 'shifts#show_by_id', as: 'usershifts'
       devise_scope :user do
         get '/sign_in', to: 'sessions#new'
         get '/sign_up', to: 'registrations#new'
