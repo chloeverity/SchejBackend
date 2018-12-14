@@ -1,7 +1,7 @@
 # README
 
 ## About
-This is the backend of our scheduling app, Schej. It is a Ruby on Rails API, which communicates with the front end, which is React. The aim of the full project is to create an app that will allow employers to create and manage their employees through shifts. It will also allow employees to successfully and quickly swap shifts with their counterparts, without having to go through a third party.
+This is the backend of our scheduling app, Schej. It is a Ruby on Rails API, which communicates with [the front end](https://github.com/jebax/SchejFrontend), which is React. The aim of the full project is to create an app that will allow employers to create and manage their employees through shifts. It will also allow employees to successfully and quickly swap shifts with their counterparts, without having to go through a third party.
 
 Here are our initial user stories:
 
@@ -36,11 +36,14 @@ First, clone the repository, then:
 > bin/rails db:create
 > bin/rails db:migrate
 
-> rails s
+> rails s -p 3001
 ```
-You can now make requests to our Api.
+You can now make requests to our Api. The chosen port is important, as the front-end runs on port 3000.
 
 to test:
 ```
 > rspec
 ```
+
+Production link:
+[Here](http://schej-backend.herokuapp.com/) is a link to the deployed API on Heroku.
