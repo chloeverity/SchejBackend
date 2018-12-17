@@ -7,3 +7,4 @@ AllCops:
     - 'config/initializers/**'
     - 'config/environments/**'
     - 'config/**'
+    - 'vendor/bundle/ruby/2.5.0/gems/rainbow-3.0.0/*'
