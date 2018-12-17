@@ -2,13 +2,15 @@
 
 class Api::V1::ShiftsController < ApplicationController
   def index
-    @shifts = Shift.where(organisation: params[:organisation])
+    @shifts = Shift.where(organisation: params[:organisation]).where(job_title: params[:job_title])
+
     render json: @shifts, status: :ok
   end
 
   def create
     organisation = User.where(id: params[:user_id]).pluck(:organisation).first
-    @shift = Shift.new(shift_params.merge(organisation: organisation))
+    job_title = User.where(id: params[:user_id]).pluck(:job_title).first
+    @shift = Shift.new(shift_params.merge(organisation: organisation, job_title: job_title))
     @shift.save!
 
     render json: @shift.as_json(), status: :created

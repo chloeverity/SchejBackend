@@ -5,9 +5,10 @@ RSpec.describe Api::V1::RegistrationsController, type: :request do
   let(:user_1_email) { 'test@test.com' }
   let(:user_1_org) { 'Makers Academy' }
   let(:user_1_name) { 'user1' }
+  let(:user_1_job_title) { 'coach' }
 
   before do
-    sign_up_get_user_id(user_1_email, user_1_org, user_1_name)
+    sign_up_get_user_id(user_1_email, user_1_org, user_1_name, user_1_job_title)
   end
 
   describe 'signing up' do

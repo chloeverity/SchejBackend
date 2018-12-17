@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_14_102504) do
+ActiveRecord::Schema.define(version: 2018_12_17_113100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_12_14_102504) do
     t.bigint "user_id"
     t.string "organisation"
     t.string "email"
+    t.string "job_title"
     t.index ["user_id"], name: "index_shifts_on_user_id"
   end
 
@@ -49,6 +50,7 @@ ActiveRecord::Schema.define(version: 2018_12_14_102504) do
     t.string "name"
     t.string "mobile"
     t.string "organisation"
+    t.string "job_title"
     t.index ["authentication_token"], name: "index_users_on_authentication_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
