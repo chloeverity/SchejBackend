@@ -28,9 +28,9 @@ RSpec.describe Api::V1::RequestsController, type: :request do
       post '/api/v1/requests', params: { 'requested_shift_id' => @shift_1_id, 'current_shift_id' => @shift_2_id , 'comment' => "clash with my dentist appointment"}
       get "/api/v1/requestsbyuser/#{@user_1_id}"
       expect(JSON.parse(response.body).length).to eq 1
-      expect(JSON.parse(response.body).first).to include('shift_requester_id' => @user_2_id)
-      expect(JSON.parse(response.body).last).to include('current_shift_id' => @shift_2_id)
-      expect(JSON.parse(response.body).last).to include 'comment' => "clash with my dentist appointment"
+      expect(JSON.parse(response.body).first['current_shift']).to include('current_shift_user_id' => @user_2_id)
+      expect(JSON.parse(response.body).first['current_shift']).to include('id' => @shift_2_id)
+      expect(JSON.parse(response.body).first).to include 'comment' => "clash with my dentist appointment"
     end
   end
 
