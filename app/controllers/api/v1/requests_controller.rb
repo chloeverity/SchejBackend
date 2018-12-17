@@ -42,16 +42,16 @@ class Api::V1::RequestsController < ApplicationController
 
     {id: request.id, comment: request.comment, 'requestedShift':
       {id: request.requested_shift_id,
-        requestedShiftUserId: request.shift_holder_id,
-        requestedShiftHolderName: requested_shift_holder.name,
-        requestedShiftStart: requested_shift.start_time,
-        requestedShiftEnd: requested_shift.end_time},
+        userId: request.shift_holder_id,
+        name: requested_shift_holder.name,
+        start: requested_shift.start_time,
+      end: requested_shift.end_time},
       'currentShift':
         { id: request.current_shift_id,
-          currentShiftUserId: request.shift_requester_id,
-          currentShiftHolderName: current_shift_holder.name,
-          currentShiftStart: current_shift.start_time,
-          currentShiftEnd: current_shift.end_time}
+          userId: request.shift_requester_id,
+          name: current_shift_holder.name,
+          start: current_shift.start_time,
+          end: current_shift.end_time}
       }
     end
 end
