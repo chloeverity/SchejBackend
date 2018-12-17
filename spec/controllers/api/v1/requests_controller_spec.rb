@@ -5,13 +5,14 @@ RSpec.describe Api::V1::RequestsController, type: :request do
   let(:user_1_email) { 'test@test.com' }
   let(:org) { 'Makers Academy' }
   let(:user_1_name) { 'user1' }
+  let(:job_title) {'coach'}
   let(:user_2_email) { 'test2@test.com' }
   let(:user_2_name) { 'user2' }
 
   before(:each) do
-    @user_1_id =  sign_up_get_user_id(user_1_email, org, user_1_name)
+    @user_1_id =  sign_up_get_user_id(user_1_email, org, user_1_name, job_title)
     @shift_1_id = post_shift_get_id(@user_1_id)
-    @user_2_id = sign_up_get_user_id(user_2_email, org, user_2_name)
+    @user_2_id = sign_up_get_user_id(user_2_email, org, user_2_name, job_title)
     @shift_2_id = post_shift_get_id(@user_2_id)
   end
 
