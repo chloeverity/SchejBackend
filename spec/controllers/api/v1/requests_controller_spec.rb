@@ -19,8 +19,8 @@ RSpec.describe Api::V1::RequestsController, type: :request do
   describe 'new request' do
     it ' creates a new request' do
       post '/api/v1/requests', params: { 'requested_shift_id' => @shift_1_id, 'current_shift_id' => @shift_2_id }
-      expect(JSON.parse(response.body)['requestedShift']).to include "userId" => @user_1_id
-      expect(JSON.parse(response.body)['currentShift']).to include "userId" => @user_2_id
+      expect(JSON.parse(response.body)['respondentShift']).to include "userId" => @user_1_id
+      expect(JSON.parse(response.body)['requesterShift']).to include "userId" => @user_2_id
     end
   end
 
@@ -29,8 +29,8 @@ RSpec.describe Api::V1::RequestsController, type: :request do
       post '/api/v1/requests', params: { 'requested_shift_id' => @shift_1_id, 'current_shift_id' => @shift_2_id , 'comment' => "clash with my dentist appointment"}
       get "/api/v1/requestsbyuser/#{@user_1_id}"
       expect(JSON.parse(response.body).length).to eq 1
-      expect(JSON.parse(response.body).first['currentShift']).to include('userId' => @user_2_id)
-      expect(JSON.parse(response.body).first['currentShift']).to include('id' => @shift_2_id)
+      expect(JSON.parse(response.body).first['requesterShift']).to include('userId' => @user_2_id)
+      expect(JSON.parse(response.body).first['requesterShift']).to include('id' => @shift_2_id)
       expect(JSON.parse(response.body).first).to include 'comment' => "clash with my dentist appointment"
     end
   end

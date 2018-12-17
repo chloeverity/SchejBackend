@@ -1,9 +1,9 @@
 class Api::V1::RequestsController < ApplicationController
 
   def create
-    requested_shift_holder_id = Shift.find(params[:requested_shift_id]).user_id
-    current_shift_holder_id = Shift.find(params[:current_shift_id]).user_id
-    @request = Request.new(request_params.merge(shift_holder_id: requested_shift_holder_id, shift_requester_id: current_shift_holder_id))
+    respondent_id = Shift.find(params[:requested_shift_id]).user_id
+    requester_id = Shift.find(params[:current_shift_id]).user_id
+    @request = Request.new(request_params.merge(shift_holder_id: respondent_id, shift_requester_id: requester_id))
 
     if @request.save
       render json: format_json_for_request(@request), status: :created
@@ -35,23 +35,23 @@ class Api::V1::RequestsController < ApplicationController
   end
 
   def format_json_for_request(request)
-    requested_shift = Shift.find(request.requested_shift_id)
-    requested_shift_holder = User.find(request.shift_requester_id)
-    current_shift = Shift.find(request.current_shift_id)
-    current_shift_holder = User.find(request.shift_holder_id)
+    respondent_shift = Shift.find(request.requested_shift_id)
+    requester = User.find(request.shift_requester_id)
+    requester_shift = Shift.find(request.current_shift_id)
+    respondent = User.find(request.shift_holder_id)
 
-    {id: request.id, comment: request.comment, 'requestedShift':
+    {id: request.id, comment: request.comment, 'respondentShift':
       {id: request.requested_shift_id,
         userId: request.shift_holder_id,
-        name: requested_shift_holder.name,
-        start: requested_shift.start_time,
-      end: requested_shift.end_time},
-      'currentShift':
+        name: respondent.name,
+        start: respondent_shift.start_time,
+      end: respondent_shift.end_time},
+      'requesterShift':
         { id: request.current_shift_id,
           userId: request.shift_requester_id,
-          name: current_shift_holder.name,
-          start: current_shift.start_time,
-          end: current_shift.end_time}
+          name: requester.name,
+          start: requester_shift.start_time,
+        end: requester_shift.end_time}
       }
     end
 end
