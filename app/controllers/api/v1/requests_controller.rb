@@ -4,7 +4,6 @@ class Api::V1::RequestsController < ApplicationController
     requested_shift_holder_id = Shift.find(params[:requested_shift_id]).user_id
     current_shift_holder_id = Shift.find(params[:current_shift_id]).user_id
     @request = Request.new(request_params.merge(shift_holder_id: requested_shift_holder_id, shift_requester_id: current_shift_holder_id))
-
     if @request.save
       render json: format_json_for_request(@request), status: :created
     else

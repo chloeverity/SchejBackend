@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :problems
       resources :services
       resources :requests
+      resources :emergency_requests
       get '/shiftsbyuser/:user_id', to: 'shifts#show_by_id', as: 'usershifts'
       get '/requestsbyuser/:user_id', to: 'requests#show_by_id', as: 'userrequests'
       devise_scope :user do
