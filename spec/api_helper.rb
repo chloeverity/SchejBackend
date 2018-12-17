@@ -4,13 +4,13 @@ def sign_up_get_user_id(email, organisation, name, job_title)
   params = { 'email' => email, 'password' => 'testpassword',
              'password_confirmation' => 'testpassword',
              'organisation' => organisation, 'mobile' => '12345678910', 'name' => name,
-           'job_title' => job_title }
+             'job_title' => job_title }
 
   post '/api/v1/sign_up', params: { 'email' => email, 'password' => 'testpassword',
-             'password_confirmation' => 'testpassword',
-             'organisation' => organisation, 'mobile' => '12345678910', 'name' => name, 'job_title' => job_title }
+                                    'password_confirmation' => 'testpassword',
+                                    'organisation' => organisation, 'mobile' => '12345678910', 'name' => name, 'job_title' => job_title }
 
-  return JSON.parse(response.body)['id']
+  JSON.parse(response.body)['id']
 end
 
 def sign_in(email)
@@ -24,8 +24,7 @@ def post_shift_get_id(user_id)
              'end_time' => 1_517_540_400_000, 'user_id' => user_id,
              'organisation' => user.organisation, 'email' => user.email, 'job_title' => user.job_title }
   post '/api/v1/shifts', params: params
-  return JSON.parse(response.body)['id']
-
+  JSON.parse(response.body)['id']
 end
 
 def get_shifts(organisation, job_title)
@@ -37,5 +36,5 @@ def delete_shift(id)
 end
 
 def get_shifts_by_user(id)
-   get "/api/v1/shiftsbyuser/#{id}"
+  get "/api/v1/shiftsbyuser/#{id}"
 end

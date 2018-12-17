@@ -6,16 +6,15 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
   let(:user_1_email) { 'test@test.com' }
   let(:user_1_org) { 'Makers Academy' }
   let(:user_1_name) { 'user1' }
-  let(:user_1_job_title) { 'coach'}
+  let(:user_1_job_title) { 'coach' }
   let(:user_2_email) { 'test2@test.com' }
   let(:user_2_org) { 'MacDonalds' }
   let(:user_2_name) { 'user2' }
-  let(:user_2_job_title) {'chef'}
-  let(:user_3_email) {'test3@test.com'}
-  let(:user_3_name) {'user3'}
-  let(:user_3_org) {'Makers Academy'}
-  let(:user_3_job_title) {'assistant coach'}
-
+  let(:user_2_job_title) { 'chef' }
+  let(:user_3_email) { 'test3@test.com' }
+  let(:user_3_name) { 'user3' }
+  let(:user_3_org) { 'Makers Academy' }
+  let(:user_3_job_title) { 'assistant coach' }
 
   before(:each) do
     @user_1_id = sign_up_get_user_id(user_1_email, user_1_org, user_1_name, user_1_job_title)

@@ -13,7 +13,7 @@ class Api::V1::ShiftsController < ApplicationController
     @shift = Shift.new(shift_params.merge(organisation: organisation, job_title: job_title))
     @shift.save!
 
-    render json: @shift.as_json(), status: :created
+    render json: @shift.as_json, status: :created
   end
 
   def update

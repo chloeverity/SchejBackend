@@ -1,5 +1,6 @@
-class Api::V1::RequestsController < ApplicationController
+# frozen_string_literal: true
 
+class Api::V1::RequestsController < ApplicationController
   def create
     respondent_id = Shift.find(params[:requested_shift_id]).user_id
     requester_id = Shift.find(params[:current_shift_id]).user_id
@@ -16,7 +17,7 @@ class Api::V1::RequestsController < ApplicationController
     @requests = Request.where(shift_holder_id: params[:user_id])
 
     render json: @requests.map { |request| format_json_for_request(request) },
-      status: :ok
+           status: :ok
   end
 
   def destroy
@@ -30,8 +31,9 @@ class Api::V1::RequestsController < ApplicationController
   end
 
   private
+
   def request_params
-      params.permit(:current_shift_id, :requested_shift_id, :shift_requester_id , :comment)
+    params.permit(:current_shift_id, :requested_shift_id, :shift_requester_id, :comment)
   end
 
   def format_json_for_request(request)
@@ -40,18 +42,17 @@ class Api::V1::RequestsController < ApplicationController
     requester_shift = Shift.find(request.current_shift_id)
     respondent = User.find(request.shift_holder_id)
 
-    {id: request.id, comment: request.comment, 'respondentShift':
-      {id: request.requested_shift_id,
+    { id: request.id, comment: request.comment, 'respondentShift':
+      { id: request.requested_shift_id,
         userId: request.shift_holder_id,
         name: respondent.name,
         start: respondent_shift.start_time,
-      end: respondent_shift.end_time},
+        end: respondent_shift.end_time },
       'requesterShift':
         { id: request.current_shift_id,
           userId: request.shift_requester_id,
           name: requester.name,
           start: requester_shift.start_time,
-        end: requester_shift.end_time}
-      }
+          end: requester_shift.end_time } }
     end
 end
