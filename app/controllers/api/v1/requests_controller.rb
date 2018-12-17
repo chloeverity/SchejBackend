@@ -1,12 +1,26 @@
 class Api::V1::RequestsController < ApplicationController
 
   def create
-    requested_shift_holder_id = Shift.where(id: params[:requested_shift_id]).pluck(:user_id).first
-    current_shift_holder_id = Shift.where(id: params[:current_shift_id]).pluck(:user_id).first
-    @request = Request.new(request_params.merge(shift_holder_id: requested_shift_holder_id, shift_requester_id: current_shift_holder_id))
+    requested_shift = Shift.find(params[:requested_shift_id])
+    requested_shift_holder = User.find(requested_shift.user_id)
+    current_shift = Shift.find(params[:current_shift_id])
+    current_shift_holder = User.find(current_shift.user_id)
+    @request = Request.new(request_params.merge(shift_holder_id: requested_shift_holder.id, shift_requester_id: current_shift_holder.id))
     @request.save!
 
-    render json: @request.as_json( ), status: :created
+    render json: {id: @request.id, comment: @request.comment, 'requested_shift':
+      {id: @request.requested_shift_id,
+        requested_shift_user_id: @request.shift_holder_id,
+        requested_shift_holder_name: requested_shift_holder.name,
+        requested_shift_start: requested_shift.start_time,
+        requested_shift_end: requested_shift.end_time},
+      'current_shift':
+        { id: @request.current_shift_id,
+          current_shift_user_id: @request.shift_requester_id,
+          current_shift_holder_name: current_shift_holder.name,
+          current_shift_start: current_shift.start_time,
+          current_shift_end: current_shift.end_time}
+          }, status: :created
   end
 
   def show_by_id

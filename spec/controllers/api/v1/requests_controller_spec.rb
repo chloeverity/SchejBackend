@@ -18,7 +18,8 @@ RSpec.describe Api::V1::RequestsController, type: :request do
   describe 'new request' do
     it ' creates a new request' do
       post '/api/v1/requests', params: { 'requested_shift_id' => @shift_1_id, 'current_shift_id' => @shift_2_id }
-      expect(JSON.parse(response.body)).to include "shift_holder_id" => @user_1_id
+      expect(JSON.parse(response.body)['requested_shift']).to include "requested_shift_user_id" => @user_1_id
+      expect(JSON.parse(response.body)['current_shift']).to include "current_shift_user_id" => @user_2_id
     end
   end
 
