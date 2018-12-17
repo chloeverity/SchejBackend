@@ -40,18 +40,18 @@ class Api::V1::RequestsController < ApplicationController
     current_shift = Shift.find(request.current_shift_id)
     current_shift_holder = User.find(request.shift_holder_id)
 
-    {id: request.id, comment: request.comment, 'requested_shift':
+    {id: request.id, comment: request.comment, 'requestedShift':
       {id: request.requested_shift_id,
-        requested_shift_user_id: request.shift_holder_id,
-        requested_shift_holder_name: requested_shift_holder.name,
-        requested_shift_start: requested_shift.start_time,
-        requested_shift_end: requested_shift.end_time},
-      'current_shift':
+        requestedShiftUserId: request.shift_holder_id,
+        requestedShiftHolderName: requested_shift_holder.name,
+        requestedShiftStart: requested_shift.start_time,
+        requestedShiftEnd: requested_shift.end_time},
+      'currentShift':
         { id: request.current_shift_id,
-          current_shift_user_id: request.shift_requester_id,
-          current_shift_holder_name: current_shift_holder.name,
-          current_shift_start: current_shift.start_time,
-          current_shift_end: current_shift.end_time}
+          currentShiftUserId: request.shift_requester_id,
+          currentShiftHolderName: current_shift_holder.name,
+          currentShiftStart: current_shift.start_time,
+          currentShiftEnd: current_shift.end_time}
       }
     end
 end
