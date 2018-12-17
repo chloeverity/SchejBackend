@@ -35,8 +35,10 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
   describe 'index by organisation' do
     it "shows all shifts for user's organisation" do
       get_shifts(user_1_org, user_1_job_title)
-      expect(JSON.parse(response.body).first).to include('email' => user_1_email)
-      expect(JSON.parse(response.body).first).to include('title' => user_1_name)
+      expect(JSON.parse(response.body).first)
+        .to include('email' => user_1_email)
+      expect(JSON.parse(response.body).first)
+        .to include('title' => user_1_name)
     end
 
     it "shows all shifts for user 2's organisation and not user 1's " do

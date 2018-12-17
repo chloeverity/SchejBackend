@@ -21,7 +21,8 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
       user_1_email,
       user_1_org,
       user_1_name,
-      user_1_job_title)
+      user_1_job_title
+    )
     @shift_1_id = post_shift_get_id(@user_1_id)
   end
 
@@ -31,9 +32,12 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
         user_2_email,
         user_2_org,
         user_2_name,
-        user_2_job_title)
+        user_2_job_title
+      )
       shift_2_id = post_shift_get_id(user_id2)
-      patch "/api/v1/shifts/#{@shift_1_id}", params: { 'other_id' => shift_2_id }
+      patch "/api/v1/shifts/#{@shift_1_id}", params: {
+        'other_id' => shift_2_id
+      }
 
       shift2 = Shift.find(shift_2_id)
       expect(shift2.user_id).to eq @user_1_id
@@ -59,8 +63,10 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
 
       get_shifts_by_user(@user_1_id)
       expect(JSON.parse(response.body).length).to eq 2
-      expect(JSON.parse(response.body).first).to include('user_id' => @user_1_id)
-      expect(JSON.parse(response.body).last).to include('user_id' => @user_1_id)
+      expect(JSON.parse(response.body).first)
+        .to include('user_id' => @user_1_id)
+      expect(JSON.parse(response.body).last)
+        .to include('user_id' => @user_1_id)
     end
   end
 end
