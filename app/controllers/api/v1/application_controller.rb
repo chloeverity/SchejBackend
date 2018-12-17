@@ -35,7 +35,6 @@ class Api::V1::ApplicationController < ActionController::API
 
     if user && Devise.secure_compare(user.authentication_token,
                                      params[:user_token])
-      user = User.find_by_email(user_email)
       return true
     else
       render json: '{"success" : "false"}'

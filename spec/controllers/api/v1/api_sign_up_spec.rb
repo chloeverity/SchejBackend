@@ -25,7 +25,9 @@ RSpec.describe Api::V1::RegistrationsController, type: :request do
 
     it 'does not allow incorrect sign in' do
       sign_in('test2@test.com')
-      expect(JSON.parse(response.body)).to eq('error' => 'invalid email and password combination')
+      expect(JSON.parse(response.body)).to eq(
+        'error' => 'invalid email and password combination'
+      )
     end
   end
 
