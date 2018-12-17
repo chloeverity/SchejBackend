@@ -1,22 +1,22 @@
 class Api::V1::RequestsController < ApplicationController
 
   def create
-    requested_shift = Shift.find(params[:requested_shift_id])
-    requested_shift_holder = User.find(requested_shift.user_id)
-    current_shift = Shift.find(params[:current_shift_id])
-    current_shift_holder = User.find(current_shift.user_id)
-    @request = Request.new(request_params.merge(shift_holder_id: requested_shift_holder.id, shift_requester_id: current_shift_holder.id))
-    @request.save!
+    requested_shift_holder_id = Shift.find(params[:requested_shift_id]).user_id
+    current_shift_holder_id = Shift.find(params[:current_shift_id]).user_id
+    @request = Request.new(request_params.merge(shift_holder_id: requested_shift_holder_id, shift_requester_id: current_shift_holder_id))
 
-    render json: format_json_for_request(@request), status: :created
+    if @request.save
+      render json: format_json_for_request(@request), status: :created
+    else
+      head(:unprocessable_entity)
+    end
   end
 
   def show_by_id
     @requests = Request.where(shift_holder_id: params[:user_id])
 
-    render json: (@requests.map do |request|
-      format_json_for_request(request)
-        end), status: :ok
+    render json: @requests.map { |request| format_json_for_request(request) },
+      status: :ok
   end
 
   def destroy
