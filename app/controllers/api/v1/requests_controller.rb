@@ -10,7 +10,7 @@ class Api::V1::RequestsController < ApplicationController
     )
 
     if @request.save
-      render json: format_json_for_request(@request), status: :created
+      render json: format_json(@request), status: :created
     else
       head(:unprocessable_entity)
     end
@@ -19,7 +19,7 @@ class Api::V1::RequestsController < ApplicationController
   def show_by_id
     @requests = Request.where(shift_holder_id: params[:user_id])
 
-    render json: @requests.map { |request| format_json_for_request(request) },
+    render json: @requests.map { |request| format_json(request) },
            status: :ok
   end
 
@@ -41,7 +41,7 @@ class Api::V1::RequestsController < ApplicationController
     )
   end
 
-  def format_json_for_request(request)
+  def format_json(request)
     respondent_shift = Shift.find(request.requested_shift_id)
     requester = User.find(request.shift_requester_id)
     requester_shift = Shift.find(request.current_shift_id)
