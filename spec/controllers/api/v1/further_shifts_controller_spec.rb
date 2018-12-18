@@ -69,4 +69,24 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
         .to include('user_id' => @user_1_id)
     end
   end
+
+  describe "taking on an emergency shift" do
+    it 'amends a shift with an emergency request' do
+      user_id2 = sign_up_get_user_id(
+        user_2_email,
+        user_2_org,
+        user_2_name,
+        user_2_job_title
+      )
+      patch "/api/v1/emergencyshift/#{@shift_1_id}", params: {
+        'respondent_id' => user_id2
+      }
+
+      shift = Shift.find(@shift_1_id)
+      expect(shift.start_time).to eq "1517540400000"
+      expect(shift.user_id).to eq user_id2
+      expect(shift.title).to eq user_2_name
+      expect(shift.email).to eq user_2_email
+    end
+  end
 end

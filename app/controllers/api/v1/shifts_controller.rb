@@ -44,6 +44,13 @@ class Api::V1::ShiftsController < ApplicationController
     render json: @shifts, status: :ok
   end
 
+  def amend_emergency_shift
+    shift = Shift.find(params[:shift_id])
+    user = User.find(params[:respondent_id])
+
+    shift.update(title: user.name, user_id: user.id, email: user.email)
+  end
+
   private
 
   def shift_params
