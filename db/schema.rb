@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_17_113100) do
+ActiveRecord::Schema.define(version: 2018_12_17_150435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "emergency_requests", force: :cascade do |t|
+    t.integer "emergency_requester_id"
+    t.text "comment"
+    t.integer "emergency_shift_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "requests", force: :cascade do |t|
     t.integer "shift_requester_id"
@@ -56,6 +64,8 @@ ActiveRecord::Schema.define(version: 2018_12_17_113100) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "emergency_requests", "shifts", column: "emergency_shift_id"
+  add_foreign_key "emergency_requests", "users", column: "emergency_requester_id"
   add_foreign_key "requests", "shifts", column: "current_shift_id"
   add_foreign_key "requests", "shifts", column: "requested_shift_id"
   add_foreign_key "requests", "users", column: "shift_holder_id"
