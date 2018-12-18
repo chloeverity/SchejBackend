@@ -28,6 +28,16 @@ class Api::V1::EmergencyRequestsController < ApplicationController
     render json: relevant_requests.map { |request| format_json(request) }
   end
 
+  def destroy
+    @emergency_request = EmergencyRequest.find(params[:id])
+
+    if @emergency_request.destroy
+      head(:ok)
+    else
+      head(:unprocessable_entity)
+    end
+  end
+
   private
 
   def request_params

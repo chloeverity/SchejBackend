@@ -35,5 +35,13 @@ RSpec.describe Api::V1::EmergencyRequestsController, type: :request do
       get '/api/v1/emergency_requests', params: { 'user_id' => @user_3_id }
       expect(JSON.parse(response.body).length).to eq 0
     end
+
+    it 'deletes the emergency request' do
+      post '/api/v1/emergency_requests', params: { 'emergency_shift_id' => @shift_1_id, 'comment' => 'hello' }
+      id = JSON.parse(response.body)['id']
+      delete "/api/v1/emergency_requests/#{id}"
+      expect(EmergencyRequest.all.length).to eq 0
+    end
   end
+
 end
