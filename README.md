@@ -1,4 +1,4 @@
-# README
+# Schej Backend [![Build Status](https://travis-ci.org/chloeverity/SchejBackend.svg?branch=master)](https://travis-ci.org/chloeverity/SchejBackend)
 
 ## About
 This is the backend of our scheduling app, Schej. It is a Ruby on Rails API, which communicates with [the front end](https://github.com/jebax/SchejFrontend), which is React. The aim of the full project is to create an app that will allow employers to create and manage their employees through shifts. It will also allow employees to successfully and quickly swap shifts with their counterparts, without having to go through a third party.
