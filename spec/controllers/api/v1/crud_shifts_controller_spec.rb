@@ -75,7 +75,6 @@ RSpec.describe Api::V1::ShiftsController, type: :request do
       )
       post_shift_get_id(user_id3)
       get_shifts(user_3_org, user_3_job_title)
-      p response.body
       expect(JSON.parse(response.body).length).to eq 1
       expect(JSON.parse(response.body).first).not_to include(
         'email' => user_1_email
