@@ -5,7 +5,7 @@ class Api::V1::ShiftsController < ApplicationController
     @shifts = Shift.where(organisation: params[:organisation])
                    .where(job_title: params[:job_title])
 
-    render json: @shifts, status: :ok
+    render json: @shifts.map { |shift| format_json(shift) }, status: :ok
   end
 
   def create
@@ -52,6 +52,11 @@ class Api::V1::ShiftsController < ApplicationController
   end
 
   private
+
+  def format_json(shift)
+    { title: shift.title, start: shift.start_time, end: shift.end_time,
+      userId: shift.user_id, email: shift.email, eventId: shift.id }
+  end
 
   def shift_params
     params.permit(:title, :start_time, :end_time, :user_id, :email)
